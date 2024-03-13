@@ -3,13 +3,13 @@ Att tänka på.
 Se till att du är på rätt gren innan du börjar implementera ändringar. 
 
 
-git pull // Hämtar ändringar och mergar dem med din branch.
-git branch -a //För att se vilken branch du ligger i och alla lokala samt remote branches. 
-git branch -r //För att bara se alla remote branches. 
-git branch // Annat sätt för att se branches samt vilken branch du sitter på.
-git checkout -b Feature/*Namnetpåfeature* //Skapa en ny branch.
-git checkout *Namnet på branchen* //Hoppa eller flytta till den branchen.
-git status // För att se hur du ligger till i din versionshantering i den branchen.
+1. git pull // Hämtar ändringar och mergar dem med din branch.
+2. git branch -a //För att se vilken branch du ligger i och alla lokala samt remote branches. 
+3. git branch -r //För att bara se alla remote branches. 
+4. git branch // Annat sätt för att se branches samt vilken branch du sitter på.
+5. git checkout -b Feature/*Namnetpåfeature* //Skapa en ny branch.
+6. git checkout *Namnet på branchen* //Hoppa eller flytta till den branchen.
+7. git status // För att se hur du ligger till i din versionshantering i den branchen.
 
 
 Steg för push i powershell
