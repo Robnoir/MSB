@@ -7,9 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Dto\" />
+    <Folder Include="Commands\Order\AddOrder\" />
+    <Folder Include="Commands\Order\DeleteOrder\" />
+    <Folder Include="Commands\Order\UpdateOrder\" />
+    <Folder Include="Commands\User\DeleteUser\" />
+    <Folder Include="Commands\User\UpdateUser\" />
+    <Folder Include="Commands\WareHouse\AddWarehouse\" />
+    <Folder Include="Commands\WareHouse\DeleteWarehouse\" />
+    <Folder Include="Commands\WareHouse\UpdateWarehouse\" />
+    <Folder Include="Dto\WareHouse\" />
+    <Folder Include="Dto\User\" />
+    <Folder Include="Queries\Order\GetAll\" />
+    <Folder Include="Queries\Order\GetByID\" />
+    <Folder Include="Queries\User\GetAll\" />
+    <Folder Include="Queries\User\GetById\" />
+    <Folder Include="Queries\Warehouse\GetAll\" />
+    <Folder Include="Queries\Warehouse\GetByID\" />
     <Folder Include="Validators\" />
-    <Folder Include="Queries\" />
   </ItemGroup>
 
 </Project>

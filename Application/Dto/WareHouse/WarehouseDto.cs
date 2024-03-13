@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Commands.AddUser
+namespace Application.Dto.WareHouse
 {
-    public class AddUserCommand
+    internal class WarehouseDto
     {
     }
 }
