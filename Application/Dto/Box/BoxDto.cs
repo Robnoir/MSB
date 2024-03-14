@@ -1,19 +1,19 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Application.Dto.WareHouse
+namespace Application.Dto.Employee
 {
-    public class WarehouseDto
+    public class EmployeeDto
     {
+        public string? Name
+
         [Key]
-        public int? WarehouseId { get; set; }
+        public int? EmployeeId { get; set; }
 
         [ForeignKey("AddressId")]
         public int AddressId { get; set; }
         // public Address Address { get; set; }
 
-        [ForeignKey("ShelfId")]
-        public int ShelfId { get; set; }
-        // public Shelf Shelf { get; set; }
+
     }
 }
