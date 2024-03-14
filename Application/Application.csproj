@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Dto\Box\.cs" />
+    <Compile Remove="Dto\Box\Bo.cs" />
+    <Compile Remove="Dto\Box\Box.cs" />
+    <Compile Remove="Dto\Box\SmallBox.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Commands\Order\AddOrder\" />
     <Folder Include="Commands\Order\DeleteOrder\" />
     <Folder Include="Commands\Order\UpdateOrder\" />
@@ -15,7 +22,14 @@
     <Folder Include="Commands\WareHouse\AddWarehouse\" />
     <Folder Include="Commands\WareHouse\DeleteWarehouse\" />
     <Folder Include="Commands\WareHouse\UpdateWarehouse\" />
-    <Folder Include="Dto\WareHouse\" />
+    <Folder Include="Dto\Employee\" />
+    <Folder Include="Dto\Item\" />
+    <Folder Include="Dto\Driver\" />
+    <Folder Include="Dto\Car\" />
+    <Folder Include="Dto\Shelf\" />
+    <Folder Include="Dto\PaymentMethod\" />
+    <Folder Include="Dto\Repair\" />
+    <Folder Include="Dto\Transaction\" />
     <Folder Include="Dto\User\" />
     <Folder Include="Queries\Order\GetAll\" />
     <Folder Include="Queries\Order\GetByID\" />
