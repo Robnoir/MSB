@@ -19,7 +19,7 @@ namespace Application.Dto.Shelf
         [ForeignKey("BoxID")]
         public int BoxID { get; set; }
         // public Address Address { get; set; }
-                
+
         [ForeignKey("ItemID")]
         public int ItemID { get; set; }
         // public Address Address { get; set; }
