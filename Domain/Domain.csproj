@@ -10,4 +10,8 @@
     <Folder Include="Models\WareHouseModel\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Diagnostics.Tools" Version="4.3.0" />
+  </ItemGroup>
+
 </Project>

@@ -15,7 +15,7 @@ namespace Application.Dto.Car
         [ForeignKey("DriverID")] // Specifies DriverID as the foreign key
         public int DriverID { get; set; }
 
-        public Driver Driver { get; set; }
+        //public Driver Driver { get; set; }
     }
 }
 
