@@ -4,6 +4,7 @@ using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,13 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(MSB_Database))]
-    partial class MSB_DatabaseModelSnapshot : ModelSnapshot
+    [Migration("20240315090025_mig2")]
+    partial class mig2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.3")
+                .HasAnnotation("ProductVersion", "8.0.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
@@ -86,7 +89,7 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b870b5ce-fecc-4afb-ab2b-07ddb9d8837e"),
+                            Id = new Guid("f606a06e-77c4-4ec6-871d-e7389c811997"),
                             Email = "Adam@gmail.com",
                             FirstName = "Adam",
                             LastName = "Andersson",
@@ -94,7 +97,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a54f8b51-3e71-4b7c-8880-46574e532d44"),
+                            Id = new Guid("8231cd1f-c54b-40f7-b76a-fd58224ec787"),
                             Email = "Bertil@gmail.com",
                             FirstName = "Bertil",
                             LastName = "Bengtsson",
@@ -102,19 +105,11 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("de545d2e-9959-4bcc-b363-b90b8bfa3581"),
+                            Id = new Guid("ebb23e38-1735-4192-bf03-3d143d51a6fa"),
                             Email = "Cecar@gmail.com",
                             FirstName = "Cecar",
                             LastName = "Citron",
                             Password = "Cecar123"
-                        },
-                        new
-                        {
-                            Id = new Guid("837eec4c-f4fb-4d7e-80cb-cea2ea654649"),
-                            Email = "Erik@gmail.com",
-                            FirstName = "Erik",
-                            LastName = "Eriksson",
-                            Password = "Erik123"
                         });
                 });
 

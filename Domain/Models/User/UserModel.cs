@@ -1,9 +1,11 @@
 ﻿using Domain.Models.Address;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Models.UserModel
 {
     public class UserModel
     {
+        [Key]
         public Guid Id { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
