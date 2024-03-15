@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Models.OrderModel
 {
-    internal class Order
+    internal class OrderModel
     {
     }
 }

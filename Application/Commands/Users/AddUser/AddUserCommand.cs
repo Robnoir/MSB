@@ -6,11 +6,11 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Application.Dto.User;
-using Domain.Models;
+using Domain.Models.UserModel;
 
 namespace Application.Commands.Users.AddUser
 {
-    public class AddUserCommand : IRequest<User>
+    public class AddUserCommand : IRequest<UserModel>
     {
 
         public AddUserCommand(UserDto newUser)

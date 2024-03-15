@@ -1,5 +1,5 @@
 ﻿using Application.Dto.User;
-using Domain.Models;
+using Domain.Models.UserModel;
 using Infrastructure.Repositories.UserRepo;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -26,11 +26,11 @@ namespace API.Controllers.UserController
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<User>> RegisterAsync([FromBody] UserDto request)
+        public async Task<ActionResult<UserModel>> RegisterAsync([FromBody] UserDto request)
         {
 
 
-            User newUser = new User()
+            UserModel newUser = new UserModel()
             {
                 Id = Guid.NewGuid(),
                 FirstName = request.FirstName,
