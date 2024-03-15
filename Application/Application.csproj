@@ -17,8 +17,8 @@
     <Folder Include="Commands\Order\AddOrder\" />
     <Folder Include="Commands\Order\DeleteOrder\" />
     <Folder Include="Commands\Order\UpdateOrder\" />
-    <Folder Include="Commands\User\DeleteUser\" />
-    <Folder Include="Commands\User\UpdateUser\" />
+    <Folder Include="Commands\Users\DeleteUser\" />
+    <Folder Include="Commands\Users\UpdateUser\" />
     <Folder Include="Commands\WareHouse\AddWarehouse\" />
     <Folder Include="Commands\WareHouse\DeleteWarehouse\" />
     <Folder Include="Commands\WareHouse\UpdateWarehouse\" />
@@ -38,6 +38,24 @@
     <Folder Include="Queries\Warehouse\GetAll\" />
     <Folder Include="Queries\Warehouse\GetByID\" />
     <Folder Include="Validators\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Diagnostics.Tools" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

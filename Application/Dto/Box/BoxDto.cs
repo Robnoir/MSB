@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Application.Dto.Employee
 {
-    public class EmployeeDto
+    public class BoxDto
     {
-        public string? Name
+        public string? Name;
 
-        [Key]
+
         public int? EmployeeId { get; set; }
 
         [ForeignKey("AddressId")]
