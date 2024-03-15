@@ -1,6 +1,8 @@
 ﻿using Domain.Models.Address;
 using Domain.Models.UserModel;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,20 +13,14 @@ namespace Infrastructure.Database
 {
     public class MSB_Database : DbContext
     {
-        public MSB_Database(DbContextOptions<MSB_Database> options) : base(options) { }
+
+        public MSB_Database(DbContextOptions<MSB_Database> options) : base(options)
+        {
+        }
 
 
         public virtual DbSet<UserModel> Users { get; set; }
         public virtual DbSet<AddressModel> Addresses { get; set; }
-
-        // Code below shall be removed
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseMySql("Server=localhost;port=3306;Database=MSB-Database;User=root;Password=Robert123;",
-        //                new MySqlServerVersion(new Version(8, 2, 0)));
-
-        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

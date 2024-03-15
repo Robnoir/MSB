@@ -19,9 +19,8 @@ namespace Infrastructure
 
             services.AddDbContext<MSB_Database>(options =>
                    options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
-                       new MySqlServerVersion(new Version(8, 0, 21)) // Make sure this version matches your MySQL Server version
-                               )
-                           );
+                       new MySqlServerVersion(new Version(8, 0, 21)))
+            );
 
 
             return services;
