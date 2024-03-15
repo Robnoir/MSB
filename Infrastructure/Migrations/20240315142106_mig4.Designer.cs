@@ -4,6 +4,7 @@ using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(MSB_Database))]
-    partial class MSB_DatabaseModelSnapshot : ModelSnapshot
+    [Migration("20240315142106_mig4")]
+    partial class mig4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,7 +89,7 @@ namespace Infrastructure.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("3d3f345d-d494-4a53-af72-a079fd7b4a7e"),
+                            Id = new Guid("33ca6ffc-f18f-4f17-80c6-07a96f3424d4"),
                             Email = "Adam@gmail.com",
                             FirstName = "Adam",
                             LastName = "Andersson",
@@ -94,7 +97,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3d5dd7a8-04ac-4a99-b0ba-6ecda4addd6b"),
+                            Id = new Guid("2218032d-f64d-439a-9be8-91d8060c18b3"),
                             Email = "Bertil@gmail.com",
                             FirstName = "Bertil",
                             LastName = "Bengtsson",
@@ -102,7 +105,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e338824e-22f8-4a83-8a80-14c1ca52630c"),
+                            Id = new Guid("5761d564-e513-4f3d-aec6-8f8db61c2b2d"),
                             Email = "Cecar@gmail.com",
                             FirstName = "Cecar",
                             LastName = "Citron",
@@ -110,7 +113,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("237ca902-fee1-4cee-b19c-3286bb3be960"),
+                            Id = new Guid("4129a15f-2b5d-4d7f-8423-dc65d919fa11"),
                             Email = "Erik@gmail.com",
                             FirstName = "Erik",
                             LastName = "Eriksson",
@@ -118,7 +121,7 @@ namespace Infrastructure.Migrations
                         },
                         new
                         {
-                            Id = new Guid("74526f85-6dcb-473e-bc71-8f70a1df29c7"),
+                            Id = new Guid("82d98b6d-575d-436f-8c8c-a756a4cd42dd"),
                             Email = "Fredrik@gmail.com",
                             FirstName = "Fredrik",
                             LastName = "Fredriksson",
