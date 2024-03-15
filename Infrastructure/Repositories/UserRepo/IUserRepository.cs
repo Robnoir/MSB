@@ -1,4 +1,4 @@
-﻿using Domain.Models;
+﻿using Domain.Models.UserModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,6 @@ namespace Infrastructure.Repositories.UserRepo
 {
     public interface IUserRepository
     {
-        Task<User> AddUserAsync(User user);
+        Task<UserModel> AddUserAsync(UserModel user);
     }
 }

@@ -1,4 +1,4 @@
-﻿using Domain.Models;
+﻿using Domain.Models.UserModel;
 using Infrastructure.Database;
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace Infrastructure.Repositories.UserRepo
         }
 
 
-        public async Task<User> AddUserAsync(User user)
+        public async Task<UserModel> AddUserAsync(UserModel user)
         {
             _database.Users.AddAsync(user);
             _database.SaveChangesAsync();

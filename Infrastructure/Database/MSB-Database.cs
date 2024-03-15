@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using Domain.Models.Address;
+using Domain.Models.UserModel;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -14,19 +15,15 @@ namespace Infrastructure.Database
         public MSB_Database(DbContextOptions<MSB_Database> options) : base(options) { }
 
 
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserModel> Users { get; set; }
+        public virtual DbSet<AddressModel> Addresses { get; set; }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseMySql("server=localhost;port=3306;user=root;password=Robert123;database=MSB-Database",
-        //                new MySqlServerVersion(new Version(8, 2, 0)));
 
-        //}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().HasData(
-                new User { Id = Guid.NewGuid(), Email = "Adam@gmail.com", FirstName = "Adam", LastName = "Andersson", Password = "Adam123" },
-                new User { Id = Guid.NewGuid(), Email = "Bertil@gmail.com", FirstName = "Bertil", LastName = "Bengtsson", Password = "Bertil123" }
+            modelBuilder.Entity<UserModel>().HasData(
+                new UserModel { Id = Guid.NewGuid(), Email = "Adam@gmail.com", FirstName = "Adam", LastName = "Andersson", Password = "Adam123" },
+                new UserModel { Id = Guid.NewGuid(), Email = "Bertil@gmail.com", FirstName = "Bertil", LastName = "Bengtsson", Password = "Bertil123" }
                 );
 
 
