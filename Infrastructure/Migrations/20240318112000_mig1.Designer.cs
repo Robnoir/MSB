@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(MSB_Database))]
-    [Migration("20240315090025_mig2")]
-    partial class mig2
+    [Migration("20240318112000_mig1")]
+    partial class mig1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.1")
+                .HasAnnotation("ProductVersion", "8.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
@@ -50,19 +50,19 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<Guid?>("UserModelId")
+                    b.Property<Guid?>("UserModelUserId")
                         .HasColumnType("char(36)");
 
                     b.HasKey("AddressId");
 
-                    b.HasIndex("UserModelId");
+                    b.HasIndex("UserModelUserId");
 
                     b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("Domain.Models.UserModel.UserModel", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
@@ -78,38 +78,62 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
                     b.ToTable("Users");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("f606a06e-77c4-4ec6-871d-e7389c811997"),
+                            UserId = new Guid("6aa635db-bf8f-4644-a90e-63b8f54d694d"),
                             Email = "Adam@gmail.com",
                             FirstName = "Adam",
                             LastName = "Andersson",
-                            Password = "Adam123"
+                            PasswordHash = "Adam123"
                         },
                         new
                         {
-                            Id = new Guid("8231cd1f-c54b-40f7-b76a-fd58224ec787"),
+                            UserId = new Guid("77d804dd-ad72-4686-a50c-229183822b17"),
                             Email = "Bertil@gmail.com",
                             FirstName = "Bertil",
                             LastName = "Bengtsson",
-                            Password = "Bertil123"
+                            PasswordHash = "Bertil123"
                         },
                         new
                         {
-                            Id = new Guid("ebb23e38-1735-4192-bf03-3d143d51a6fa"),
+                            UserId = new Guid("3e003862-2c60-41e9-b617-7d998313ddf3"),
                             Email = "Cecar@gmail.com",
                             FirstName = "Cecar",
                             LastName = "Citron",
-                            Password = "Cecar123"
+                            PasswordHash = "Cecar123"
+                        },
+                        new
+                        {
+                            UserId = new Guid("50938770-583b-4f8b-9691-85e138a3bb4b"),
+                            Email = "Erik@gmail.com",
+                            FirstName = "Erik",
+                            LastName = "Eriksson",
+                            PasswordHash = "Erik123"
+                        },
+                        new
+                        {
+                            UserId = new Guid("0df31c15-1143-48f0-9b49-568f2ca5e5eb"),
+                            Email = "Fredrik@gmail.com",
+                            FirstName = "Fredrik",
+                            LastName = "Fredriksson",
+                            PasswordHash = "Fredrik123"
+                        },
+                        new
+                        {
+                            UserId = new Guid("b0af51ca-473d-4d6c-8348-c2334e5c0cf7"),
+                            Email = "Gustav@gmail.com",
+                            FirstName = "Gustav",
+                            LastName = "Gustavsson",
+                            PasswordHash = "Gustav123"
                         });
                 });
 
@@ -117,7 +141,7 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Domain.Models.UserModel.UserModel", null)
                         .WithMany("Addresses")
-                        .HasForeignKey("UserModelId");
+                        .HasForeignKey("UserModelUserId");
                 });
 
             modelBuilder.Entity("Domain.Models.UserModel.UserModel", b =>

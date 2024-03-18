@@ -47,19 +47,19 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<Guid?>("UserModelId")
+                    b.Property<Guid?>("UserModelUserId")
                         .HasColumnType("char(36)");
 
                     b.HasKey("AddressId");
 
-                    b.HasIndex("UserModelId");
+                    b.HasIndex("UserModelUserId");
 
                     b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("Domain.Models.UserModel.UserModel", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
@@ -75,54 +75,62 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
                     b.ToTable("Users");
 
                     b.HasData(
                         new
                         {
-                            Id = new Guid("3d3f345d-d494-4a53-af72-a079fd7b4a7e"),
+                            UserId = new Guid("6aa635db-bf8f-4644-a90e-63b8f54d694d"),
                             Email = "Adam@gmail.com",
                             FirstName = "Adam",
                             LastName = "Andersson",
-                            Password = "Adam123"
+                            PasswordHash = "Adam123"
                         },
                         new
                         {
-                            Id = new Guid("3d5dd7a8-04ac-4a99-b0ba-6ecda4addd6b"),
+                            UserId = new Guid("77d804dd-ad72-4686-a50c-229183822b17"),
                             Email = "Bertil@gmail.com",
                             FirstName = "Bertil",
                             LastName = "Bengtsson",
-                            Password = "Bertil123"
+                            PasswordHash = "Bertil123"
                         },
                         new
                         {
-                            Id = new Guid("e338824e-22f8-4a83-8a80-14c1ca52630c"),
+                            UserId = new Guid("3e003862-2c60-41e9-b617-7d998313ddf3"),
                             Email = "Cecar@gmail.com",
                             FirstName = "Cecar",
                             LastName = "Citron",
-                            Password = "Cecar123"
+                            PasswordHash = "Cecar123"
                         },
                         new
                         {
-                            Id = new Guid("237ca902-fee1-4cee-b19c-3286bb3be960"),
+                            UserId = new Guid("50938770-583b-4f8b-9691-85e138a3bb4b"),
                             Email = "Erik@gmail.com",
                             FirstName = "Erik",
                             LastName = "Eriksson",
-                            Password = "Erik123"
+                            PasswordHash = "Erik123"
                         },
                         new
                         {
-                            Id = new Guid("74526f85-6dcb-473e-bc71-8f70a1df29c7"),
+                            UserId = new Guid("0df31c15-1143-48f0-9b49-568f2ca5e5eb"),
                             Email = "Fredrik@gmail.com",
                             FirstName = "Fredrik",
                             LastName = "Fredriksson",
-                            Password = "Fredrik123"
+                            PasswordHash = "Fredrik123"
+                        },
+                        new
+                        {
+                            UserId = new Guid("b0af51ca-473d-4d6c-8348-c2334e5c0cf7"),
+                            Email = "Gustav@gmail.com",
+                            FirstName = "Gustav",
+                            LastName = "Gustavsson",
+                            PasswordHash = "Gustav123"
                         });
                 });
 
@@ -130,7 +138,7 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Domain.Models.UserModel.UserModel", null)
                         .WithMany("Addresses")
-                        .HasForeignKey("UserModelId");
+                        .HasForeignKey("UserModelUserId");
                 });
 
             modelBuilder.Entity("Domain.Models.UserModel.UserModel", b =>
