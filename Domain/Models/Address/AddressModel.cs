@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Models.Address
 {
@@ -16,10 +11,5 @@ namespace Domain.Models.Address
         public string Region { get; set; } = string.Empty;
         public int PostalCode { get; set; }
         public string Country { get; set; } = string.Empty;
-
-
-
-
-
     }
 }
