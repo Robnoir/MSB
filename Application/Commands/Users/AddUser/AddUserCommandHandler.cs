@@ -13,17 +13,29 @@ namespace Application.Commands.Users.AddUser
     {
         public async Task<UserModel> Handle(AddUserCommand request, CancellationToken cancellationToken)
         {
-            UserModel userToCreate = new()
+            try
             {
-                Id = Guid.NewGuid(),
-                Email = request.NewUser.Email,
-                Password = request.NewUser.Password,
-                FirstName = request.NewUser.FirstName,
-                LastName = request.NewUser.LastName,
+                UserModel userToCreate = new()
+                {
+                    UserId = Guid.NewGuid(),
+                    Email = request.NewUser.Email,
+                    PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.NewUser.Password),
+                    FirstName = request.NewUser.FirstName,
+                    LastName = request.NewUser.LastName,
 
-            };
+                };
 
-            return userToCreate;
+                return userToCreate;
+            }
+            catch (Exception ex)
+            {
+                var newExeption = new Exception($"An error occurred while adding a new user: {request.NewUser.Email}", ex);
+
+                throw newExeption;
+            }
+           
+
+            
         }
     }
 }

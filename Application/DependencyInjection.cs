@@ -15,7 +15,7 @@ namespace Application
         {
             var assembly = typeof(DependencyInjection).Assembly;
             services.AddMediatR(configuration => configuration.RegisterServicesFromAssembly(assembly));
-            services.AddScoped<IUserRepository, UserRepository>();
+           
 
 
             return services;
