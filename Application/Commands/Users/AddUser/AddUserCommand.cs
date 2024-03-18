@@ -6,7 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Application.Dto.User;
-using Domain.Models.UserModel;
+using Domain.Models.EmployeeModel;
 
 namespace Application.Commands.Users.AddUser
 {

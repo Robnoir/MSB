@@ -1,5 +1,6 @@
 ﻿using Domain.Models.Address;
-using Domain.Models.UserModel;
+using Domain.Models.Employee;
+using Domain.Models.EmployeeModel;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
@@ -20,6 +21,7 @@ namespace Infrastructure.Database
 
 
         public virtual DbSet<UserModel> Users { get; set; }
+        public virtual DbSet<EmployeeModel> Employees { get; set; }
         public virtual DbSet<AddressModel> Addresses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

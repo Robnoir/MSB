@@ -1,7 +1,7 @@
 ﻿using Domain.Models.Address;
 using System.ComponentModel.DataAnnotations;
 
-namespace Domain.Models.UserModel
+namespace Domain.Models.EmployeeModel
 {
     public class UserModel
     {

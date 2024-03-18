@@ -14,7 +14,8 @@ namespace Infrastructure.Database
         public MSB_Database CreateDbContext(string[] args)
         {
             // Adjust the path to point to the API project's directory
-            var basePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"..\API"));
+            // ändra blackslash i  \API
+            var basePath = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), @"../API"));
 
             var configurationBuilder = new ConfigurationBuilder()
                 .SetBasePath(basePath)
@@ -24,7 +25,7 @@ namespace Infrastructure.Database
 
             var optionsBuilder = new DbContextOptionsBuilder<MSB_Database>();
             optionsBuilder.UseMySql(configuration.GetConnectionString("DefaultConnection"),
-                new MySqlServerVersion(new Version(8, 2, 0)));
+                new MySqlServerVersion(new Version(8, 3, 0)));
 
             return new MSB_Database(optionsBuilder.Options);
         }

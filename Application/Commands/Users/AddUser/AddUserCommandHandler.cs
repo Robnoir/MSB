@@ -1,5 +1,5 @@
 ﻿using Application.Commands.Users.AddUser;
-using Domain.Models.UserModel;
+using Domain.Models.EmployeeModel;
 using MediatR;
 using System;
 using System.Collections.Generic;
