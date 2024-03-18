@@ -1,6 +1,7 @@
 ﻿using Domain.Models.Address;
 using Domain.Models.OrderModel;
 using Domain.Models.UserModel;
+using Domain.Models.Warehouse;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Database
@@ -16,6 +17,7 @@ namespace Infrastructure.Database
         public virtual DbSet<UserModel> Users { get; set; }
         public virtual DbSet<AddressModel> Addresses { get; set; }
         public virtual DbSet<OrderModel> Orders { get; set; }
+        public virtual DbSet<WarehouseModel> Warehouses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

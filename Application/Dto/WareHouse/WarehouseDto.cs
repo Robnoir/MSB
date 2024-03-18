@@ -1,19 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Application.Dto.WareHouse
+namespace Application.Dto.Warehouse
 {
     public class WarehouseDto
     {
-        [Key]
-        public int? WarehouseId { get; set; }
-
-        [ForeignKey("AddressId")]
-        public int AddressId { get; set; }
-        // public Address Address { get; set; }
-
-        [ForeignKey("ShelfId")]
-        public int ShelfId { get; set; }
-        // public Shelf Shelf { get; set; }
+        [Required] public int WarehouseId { get; set; }
+        [Required] public string WarehouseName { get; set; }
+        [Required] public int AddressId { get; set; }
+        [Required] public int ShelfId { get; set; }
     }
 }

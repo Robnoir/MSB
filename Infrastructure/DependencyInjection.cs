@@ -1,6 +1,7 @@
 ﻿using Infrastructure.Database;
 using Infrastructure.Repositories.OrderRepo;
 using Infrastructure.Repositories.UserRepo;
+using Infrastructure.Repositories.WarehouseRepo;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,7 @@ namespace Infrastructure
         {
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IWarehouseRepository, WarehouseRepository>();
 
             services.AddDbContext<MSB_Database>(options =>
                    options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
