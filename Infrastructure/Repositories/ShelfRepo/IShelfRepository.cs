@@ -6,6 +6,8 @@ namespace Infrastructure.Repositories.ShelfRepo
     {
         Task<ShelfModel> AddShelfAsync(ShelfModel shelfToCreate);
         Task DeleteShelfAsync(Guid shelfId);
+        Task<IEnumerable<ShelfModel>> GetAllAsync();
+        Task<ShelfModel> GetShelfByIdAsync(Guid shelfId);
         Task<ShelfModel> UpdateShelfAsync(ShelfModel shelfToUpdate);
     }
 }

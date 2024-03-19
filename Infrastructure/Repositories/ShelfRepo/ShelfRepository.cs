@@ -11,6 +11,7 @@ namespace Infrastructure.Repositories.ShelfRepo
         {
             _msbDatabase = msbDatabase;
         }
+
         public async Task<ShelfModel> AddShelfAsync(ShelfModel shelfToCreate)
         {
             _msbDatabase.Shelves.Add(shelfToCreate);
@@ -26,6 +27,16 @@ namespace Infrastructure.Repositories.ShelfRepo
                 _msbDatabase.Shelves.Remove(shelf);
                 await _msbDatabase.SaveChangesAsync();
             }
+        }
+
+        public async Task<IEnumerable<ShelfModel>> GetAllAsync()
+        {
+            return await _msbDatabase.Shelves.ToListAsync();
+        }
+
+        public async Task<ShelfModel> GetShelfByIdAsync(Guid shelfId)
+        {
+            return await _msbDatabase.Shelves.FindAsync(shelfId);
         }
 
         public async Task<ShelfModel> UpdateShelfAsync(ShelfModel shelfToUpdate)
