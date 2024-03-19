@@ -1,41 +1,52 @@
-﻿using Application.Commands.Users.AddUser;
+﻿using MediatR;
 using Domain.Models.UserModel;
-using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Domain.Models.Address;
+using Infrastructure.Repositories.UserRepo;
+using System.Threading;
 using System.Threading.Tasks;
+using Application.Dto.Register;
 
-namespace Application.Commands.Users.AddUser
+public class AddUserCommandHandler : IRequestHandler<AddUserCommand, UserModels>
 {
-    public class AddUserCommandHandler : IRequestHandler<AddUserCommand, UserModel>
+    private readonly IUserRepository _userRepository;
+
+    public AddUserCommandHandler(IUserRepository userRepository)
     {
-        public async Task<UserModel> Handle(AddUserCommand request, CancellationToken cancellationToken)
+        _userRepository = userRepository;
+    }
+
+    public async Task<UserModels> Handle(AddUserCommand request, CancellationToken cancellationToken)
+    {
+        var newUser = new UserModels
         {
-            try
+            Email = request.RegisterData.Email,
+            FirstName = request.RegisterData.FirstName,
+            LastName = request.RegisterData.LastName,
+            PhoneNumber = int.Parse(request.RegisterData.PhoneNumber),
+            PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.RegisterData.Password),
+            Addresses = new List<AddressModel>()
+        };
+
+
+        if (request.RegisterData.Address != null)
+        {
+            newUser.Addresses.Add(new AddressModel
             {
-                UserModel userToCreate = new()
-                {
-                    UserId = Guid.NewGuid(),
-                    Email = request.NewUser.Email,
-                    PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.NewUser.Password),
-                    FirstName = request.NewUser.FirstName,
-                    LastName = request.NewUser.LastName,
+                StreetName = request.RegisterData.Address.StreetName,
+                StreetNumber = request.RegisterData.Address.StreetNumber,
+                Apartment = request.RegisterData.Address.Apartment,
+                ZipCode = request.RegisterData.Address.ZipCode,
+                Floor = request.RegisterData.Address.Floor,
+                City = request.RegisterData.Address.City,
+                State = request.RegisterData.Address.State,
+                Country = request.RegisterData.Address.Country,
 
-                };
-
-                return userToCreate;
-            }
-            catch (Exception ex)
-            {
-                var newExeption = new Exception($"An error occurred while adding a new user: {request.NewUser.Email}", ex);
-
-                throw newExeption;
-            }
-           
-
-            
+            });
         }
+
+
+        var savedUser = await _userRepository.AddUserAsync(newUser);
+
+        return savedUser;
     }
 }

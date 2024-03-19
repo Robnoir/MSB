@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.Queries.User.GetAll
 {
-    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery,List< UserModel>>
+    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, List<UserModels>>
     {
         private readonly IUserRepository _userRepository;
 
@@ -19,9 +19,9 @@ namespace Application.Queries.User.GetAll
 
         }
 
-        public async Task<List<UserModel>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
+        public async Task<List<UserModels>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
-            List<UserModel> allUsersFromDatabase = await _userRepository.GetAllUsersAsync();
+            List<UserModels> allUsersFromDatabase = await _userRepository.GetAllUsersAsync();
             if (allUsersFromDatabase == null)
             {
                 throw new InvalidOperationException("No Users was found");

@@ -19,10 +19,10 @@ namespace Infrastructure.Repositories.UserRepo
         }
 
 
-        public async Task<UserModel> AddUserAsync(UserModel user)
+        public async Task<UserModels> AddUserAsync(UserModels user)
         {
-            _database.Users.AddAsync(user);
-            _database.SaveChangesAsync();
+            await _database.Users.AddAsync(user);
+            await _database.SaveChangesAsync();
 
             return await Task.FromResult(user);
 
@@ -33,17 +33,17 @@ namespace Infrastructure.Repositories.UserRepo
             throw new NotImplementedException();
         }
 
-        public async Task<List<UserModel>> GetAllUsersAsync()
+        public async Task<List<UserModels>> GetAllUsersAsync()
         {
             return await _database.Users.ToListAsync();
         }
 
-        public async Task<UserModel> GetUserByIdAsync(Guid id)
+        public async Task<UserModels> GetUserByIdAsync(Guid id)
         {
             return await _database.Users.FindAsync(id);
         }
 
-        public async Task UpdateUserAsync(UserModel user)
+        public async Task UpdateUserAsync(UserModels user)
         {
             _database.Users.Update(user);
             await _database.SaveChangesAsync();

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Users.DeleteUser
 {
-    public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, UserModel>
+    public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, UserModels>
     {
 
         private readonly IUserRepository _userRepository;
@@ -18,11 +18,11 @@ namespace Application.Commands.Users.DeleteUser
             _userRepository = userRepository;
 
         }
-        public async Task<UserModel>Handle(DeleteUserCommand request, CancellationToken cancellationToken)
+        public async Task<UserModels> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
             try
             {
-                UserModel userToDelete = await _userRepository.GetUserByIdAsync(request.Id);
+                UserModels userToDelete = await _userRepository.GetUserByIdAsync(request.Id);
 
                 if (userToDelete == null)
                 {
@@ -34,15 +34,15 @@ namespace Application.Commands.Users.DeleteUser
                 return userToDelete;
 
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                 var newException = new Exception($"An Error occurred when deleteting user with id {request.Id}", ex);
+                var newException = new Exception($"An Error occurred when deleteting user with id {request.Id}", ex);
                 throw newException;
             }
 
-            
+
         }
-  
+
 
     }
 }

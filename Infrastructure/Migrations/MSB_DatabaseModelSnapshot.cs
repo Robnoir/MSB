@@ -40,7 +40,7 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("PostalCode")
+                    b.Property<int>("ZipCode")
                         .HasColumnType("int");
 
                     b.Property<string>("Region")

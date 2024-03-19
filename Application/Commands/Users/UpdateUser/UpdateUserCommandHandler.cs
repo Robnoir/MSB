@@ -16,7 +16,7 @@ namespace Application.Commands.Users.UpdateUser
             _userRepository = userRepository;
         }
 
-       public async Task<UserModel> Handle(UpdateUserCommand command,CancellationToken cancellationToken)
+        public async Task<UserModels> Handle(UpdateUserCommand command, CancellationToken cancellationToken)
         {
 
             var user = await _userRepository.GetUserByIdAsync(command.UserId);
@@ -40,11 +40,11 @@ namespace Application.Commands.Users.UpdateUser
             }
             catch (Exception ex)
             {
-                var newException = new Exception($"An error occurred while updating user with ID: {command.UserId}",ex);
+                var newException = new Exception($"An error occurred while updating user with ID: {command.UserId}", ex);
                 throw newException;
             }
         }
-       
+
 
 
     }

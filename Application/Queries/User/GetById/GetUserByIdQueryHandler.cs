@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.Queries.User.GetById
 {
-    public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserModel>
+    public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserModels>
     {
         private readonly IUserRepository _userRepository;
 
@@ -20,9 +20,9 @@ namespace Application.Queries.User.GetById
         }
 
 
-        public async Task<UserModel> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
+        public async Task<UserModels> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
-            UserModel wantedUser = await _userRepository.GetUserByIdAsync(request.Id);
+            UserModels wantedUser = await _userRepository.GetUserByIdAsync(request.Id);
             try
             {
                 if (wantedUser == null)

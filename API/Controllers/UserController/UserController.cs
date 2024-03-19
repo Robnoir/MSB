@@ -30,25 +30,6 @@ namespace API.Controllers.UserController
             _userRepository = userRepository;
         }
         //------------------------------------------------------------------------------------
-        [HttpPost("register")]
-        public async Task<ActionResult<UserModel>> RegisterAsync([FromBody] UserDto request)
-        {
-
-
-            UserModel newUser = new UserModel()
-            {
-                UserId = Guid.NewGuid(),
-                FirstName = request.FirstName,
-                LastName = request.LastName,
-                Email = request.Email,
-                PasswordHash = request.Password,
-            };
-
-            await _userRepository.AddUserAsync(newUser);
-            return newUser;
-        }
-
-        //------------------------------------------------------------------------------------
 
         [HttpGet]
         [Route("GetAllUsers")]
@@ -63,7 +44,7 @@ namespace API.Controllers.UserController
 
         [HttpGet]
         [Route("GetUserById")]
-        public async Task<IActionResult>GetUserById(Guid UserId)
+        public async Task<IActionResult> GetUserById(Guid UserId)
         {
             try
             {
@@ -77,14 +58,14 @@ namespace API.Controllers.UserController
         //------------------------------------------------------------------------------------
         [HttpPut]
         [Route("updateUser")]
-        public async Task<IActionResult> UpdateUser([FromBody] UserDto updatedUserDto,Guid updatedUserId,string newPassword)
+        public async Task<IActionResult> UpdateUser([FromBody] UserDto updatedUserDto, Guid updatedUserId, string newPassword)
         {
             try
             {
-                var command = new UpdateUserCommand( updatedUserDto,updatedUserId, newPassword);
+                var command = new UpdateUserCommand(updatedUserDto, updatedUserId, newPassword);
                 var result = await _mediator.Send(command);
 
-                if(result == null)
+                if (result == null)
                 {
                     return NotFound("User not Found");
                 }
@@ -92,13 +73,13 @@ namespace API.Controllers.UserController
 
                 return Ok(result);
 
-                
+
             }
             catch (KeyNotFoundException ex)
             {
                 return NotFound(ex.Message);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, $"An Error occurred:{ex.Message}");
             }
@@ -109,9 +90,9 @@ namespace API.Controllers.UserController
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUserById(Guid id)
         {
-            var user = await _mediator.Send(new DeleteUserCommand( id));
+            var user = await _mediator.Send(new DeleteUserCommand(id));
 
-            if(user == null)
+            if (user == null)
             {
                 return NoContent();
             }

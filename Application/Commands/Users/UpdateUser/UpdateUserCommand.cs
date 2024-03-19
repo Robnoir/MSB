@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Users.UpdateUser
 {
-    public class UpdateUserCommand : IRequest<UserModel>
+    public class UpdateUserCommand : IRequest<UserModels>
     {
         public UserDto UpdateUserDto { get; }
         public Guid UserId { get; }
@@ -22,7 +22,7 @@ namespace Application.Commands.Users.UpdateUser
             UserId = userId;
             NewPasswordHash = newPasswordHash;
 
-                
+
         }
     }
 }

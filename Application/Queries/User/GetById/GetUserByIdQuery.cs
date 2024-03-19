@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Application.Queries.User.GetById
 {
-    public class GetUserByIdQuery : IRequest<UserModel>
+    public class GetUserByIdQuery : IRequest<UserModels>
     {
         public GetUserByIdQuery(Guid userId)
         {
-            
+
             Id = userId;
         }
 
-        public Guid Id { get;  }
+        public Guid Id { get; }
     }
 }
