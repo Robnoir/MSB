@@ -41,7 +41,7 @@ namespace API.Controllers.UserController
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 Email = request.Email,
-                PasswordHash = request.Password,
+                //PasswordHash = request.Password,
             };
 
             await _userRepository.AddUserAsync(newUser);
@@ -77,18 +77,17 @@ namespace API.Controllers.UserController
         //------------------------------------------------------------------------------------
         [HttpPut]
         [Route("updateUser")]
-        public async Task<IActionResult> UpdateUser([FromBody] UserDto updatedUserDto,Guid updatedUserId,string newPassword)
+        public async Task<IActionResult> UpdateUser(Guid id,[FromBody] UserDto updatedUserDto)
         {
             try
             {
-                var command = new UpdateUserCommand( updatedUserDto,updatedUserId, newPassword);
+                var command = new UpdateUserCommand(updatedUserDto, id);
                 var result = await _mediator.Send(command);
 
-                if(result == null)
+                if (result == null)
                 {
-                    return NotFound("User not Found");
+                    return NotFound("User not found");
                 }
-
 
                 return Ok(result);
 

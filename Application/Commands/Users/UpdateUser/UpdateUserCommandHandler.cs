@@ -18,31 +18,20 @@ namespace Application.Commands.Users.UpdateUser
 
        public async Task<UserModel> Handle(UpdateUserCommand command,CancellationToken cancellationToken)
         {
-
-            var user = await _userRepository.GetUserByIdAsync(command.UserId);
-
-            try
+                var user = await _userRepository.GetUserByIdAsync(command.UserId);
+            if (user == null)
             {
-                if (!string.IsNullOrWhiteSpace(command.NewPasswordHash))
-                {
-                    user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(command.NewPasswordHash);
-                }
-
-                if (!string.IsNullOrWhiteSpace(command.UpdateUserDto.Email))
-                {
-                    user.Email = command.UpdateUserDto.Email;
-                }
-
-                await _userRepository.UpdateUserAsync(user);
-
-                return user;
-
+                throw new KeyNotFoundException("User not found");
             }
-            catch (Exception ex)
-            {
-                var newException = new Exception($"An error occurred while updating user with ID: {command.UserId}",ex);
-                throw newException;
-            }
+
+            user.Email = command.UpdateUserDto.Email ?? user.Email;
+            user.FirstName = command.UpdateUserDto.FirstName ?? user.FirstName;
+            user.LastName = command.UpdateUserDto.LastName ?? user.LastName;
+            
+
+            await _userRepository.UpdateUserAsync(user);
+            return user;
+        
         }
        
 
