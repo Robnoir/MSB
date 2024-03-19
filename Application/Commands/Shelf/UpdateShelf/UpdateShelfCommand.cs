@@ -6,10 +6,10 @@ namespace Application.Commands.Shelf.UpdateShelf
 {
     public class UpdateShelfCommand : IRequest<ShelfModel>
     {
+        public ShelfDto UpdatedShelf { get; }
         public UpdateShelfCommand(ShelfDto updatedShelf)
         {
             UpdatedShelf = updatedShelf;
         }
-        public ShelfDto UpdatedShelf { get; }
     }
 }

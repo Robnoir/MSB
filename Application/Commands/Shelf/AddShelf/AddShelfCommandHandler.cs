@@ -1,12 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Models.Shelf;
+using Infrastructure.Repositories.ShelfRepo;
+using MediatR;
 
 namespace Application.Commands.Shelf.AddShelf
 {
-    internal class AddShelfCommandHandler
+    public class AddShelfCommandHandler : IRequestHandler<AddShelfCommand, ShelfModel>
     {
+        private readonly IShelfRepository _shelfRepository;
+        public AddShelfCommandHandler(IShelfRepository shelfRepository)
+        {
+            _shelfRepository = shelfRepository;
+        }
+        public async Task<ShelfModel> Handle(AddShelfCommand request, CancellationToken cancellationToken)
+        {
+            ShelfModel shelfToCreate = new()
+            {
+                ShelfId = Guid.NewGuid(),
+                ShelfRow = request.NewShelf.ShelfRow,
+                ShelfColumn = request.NewShelf.ShelfColumn,
+                Occupancy = request.NewShelf.Occupancy,
+                WarehouseId = request.NewShelf.WarehouseId,
+            };
+
+            return await _shelfRepository.AddShelfAsync(shelfToCreate);
+        }
     }
 }

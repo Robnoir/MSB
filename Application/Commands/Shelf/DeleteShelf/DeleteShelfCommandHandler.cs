@@ -1,12 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Infrastructure.Repositories.ShelfRepo;
+using MediatR;
 
 namespace Application.Commands.Shelf.DeleteShelf
 {
-    internal class DeleteShelfCommandHandler
+    public class DeleteShelfCommandHandler : IRequestHandler<DeleteShelfCommand, Unit>
     {
+        private readonly IShelfRepository _shelfRepository;
+        public DeleteShelfCommandHandler(IShelfRepository shelfRepository)
+        {
+            _shelfRepository = shelfRepository;
+        }
+        public async Task<Unit> Handle(DeleteShelfCommand request, CancellationToken cancellationToken)
+        {
+            await _shelfRepository.DeleteShelfAsync(request.ShelfId);
+            return Unit.Value;
+        }
     }
 }
