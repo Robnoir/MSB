@@ -16,9 +16,6 @@
   <ItemGroup>
     <Folder Include="Commands\Users\DeleteUser\" />
     <Folder Include="Commands\Users\UpdateUser\" />
-    <Folder Include="Commands\WareHouse\AddWarehouse\" />
-    <Folder Include="Commands\WareHouse\DeleteWarehouse\" />
-    <Folder Include="Commands\WareHouse\UpdateWarehouse\" />
     <Folder Include="Dto\Employee\" />
     <Folder Include="Dto\Item\" />
     <Folder Include="Dto\Driver\" />
@@ -30,8 +27,6 @@
     <Folder Include="Dto\User\" />
     <Folder Include="Queries\User\GetAll\" />
     <Folder Include="Queries\User\GetById\" />
-    <Folder Include="Queries\Warehouse\GetAll\" />
-    <Folder Include="Queries\Warehouse\GetByID\" />
   </ItemGroup>
 
   <ItemGroup>

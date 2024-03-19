@@ -18,7 +18,7 @@ namespace Application.Commands.Order.AddOrder
                 // CarId = request.NewOrder.CarId, // Uncomment if you want to set CarId
                 // RepairId = request.NewOrder.RepairId, // Uncomment if you want to set RepairId
                 // WarehouseId = request.NewOrder.WarehouseId, // Uncomment if you want to set WarehouseId
-                AdressId = request.NewOrder.AdressId,
+                // AdressId = request.NewOrder.AdressId,
                 // Address = request.NewOrder.Address, // You'll need to map from AddressDto to AddressModel
                 RepairNotes = request.NewOrder.RepairNotes ?? "No notes"
             };
