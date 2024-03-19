@@ -25,8 +25,12 @@
     <Folder Include="Dto\Repair\" />
     <Folder Include="Dto\Transaction\" />
     <Folder Include="Dto\User\" />
+    <Folder Include="Queries\Shelf\GetAll\" />
+    <Folder Include="Queries\Shelf\GetByID\" />
     <Folder Include="Queries\User\GetAll\" />
     <Folder Include="Queries\User\GetById\" />
+    <Folder Include="Validators\ShelfValidator\" />
+    <Folder Include="Validators\WarehouseValidator\" />
   </ItemGroup>
 
   <ItemGroup>
