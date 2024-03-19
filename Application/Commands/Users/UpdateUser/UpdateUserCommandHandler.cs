@@ -18,20 +18,16 @@ namespace Application.Commands.Users.UpdateUser
 
         public async Task<UserModels> Handle(UpdateUserCommand command, CancellationToken cancellationToken)
         {
-
-            var user = await _userRepository.GetUserByIdAsync(command.UserId);
-
-            try
+                var user = await _userRepository.GetUserByIdAsync(command.UserId);
+            if (user == null)
             {
-                if (!string.IsNullOrWhiteSpace(command.NewPasswordHash))
-                {
-                    user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(command.NewPasswordHash);
-                }
+                throw new KeyNotFoundException("User not found");
+            }
 
-                if (!string.IsNullOrWhiteSpace(command.UpdateUserDto.Email))
-                {
-                    user.Email = command.UpdateUserDto.Email;
-                }
+            user.Email = command.UpdateUserDto.Email ?? user.Email;
+            user.FirstName = command.UpdateUserDto.FirstName ?? user.FirstName;
+            user.LastName = command.UpdateUserDto.LastName ?? user.LastName;
+            
 
                 await _userRepository.UpdateUserAsync(user);
 

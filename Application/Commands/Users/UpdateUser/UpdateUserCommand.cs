@@ -14,13 +14,12 @@ namespace Application.Commands.Users.UpdateUser
         public UserDto UpdateUserDto { get; }
         public Guid UserId { get; }
 
-        public string NewPasswordHash { get; set; }
+        public string UpdatePassword  { get; set; }
 
-        public UpdateUserCommand(UserDto userDto, Guid userId, string newPasswordHash)
+        public UpdateUserCommand(UserDto userDto, Guid userId)
         {
             UpdateUserDto = userDto;
             UserId = userId;
-            NewPasswordHash = newPasswordHash;
 
 
         }

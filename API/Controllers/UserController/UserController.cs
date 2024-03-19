@@ -67,9 +67,8 @@ namespace API.Controllers.UserController
 
                 if (result == null)
                 {
-                    return NotFound("User not Found");
+                    return NotFound("User not found");
                 }
-
 
                 return Ok(result);
 
