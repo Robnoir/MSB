@@ -9,5 +9,6 @@ namespace Infrastructure.Repositories.EmployeeRepo
         Task<EmployeeModel> CreateEmployeeAsync(EmployeeModel employee);
         Task<EmployeeModel> UpdateEmployeeAsync(Guid id, EmployeeModel employee);
         Task<bool> DeleteEmployeeAsync(Guid id);
+        Task<EmployeeModel> GetEmployeeByIdAsync(Guid id);
     }
 }

@@ -45,7 +45,7 @@ namespace API.Controllers.Employee
         public async Task<ActionResult<EmployeeModel>> CreateEmployee(EmployeeModel employee)
         {
             var createdEmployee = await _employeeRepository.CreateEmployeeAsync(employee);
-            return CreatedAtAction(nameof(GetEmployee), new { id = createdEmployee.Id }, createdEmployee);
+            return CreatedAtAction(nameof(GetEmployee), new { id = createdEmployee.EmployeeId }, createdEmployee);
         }
 
         // PUT: api/Employee/{id}

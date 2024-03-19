@@ -38,6 +38,13 @@
     <Folder Include="Queries\Warehouse\GetAll\" />
     <Folder Include="Queries\Warehouse\GetByID\" />
     <Folder Include="Validators\" />
+    <Folder Include="Commands\Employee\" />
+    <Folder Include="Commands\Employee\AddEmployee\" />
+    <Folder Include="Commands\Employee\DeleteEmployee\" />
+    <Folder Include="Commands\Employee\UpdateEmployee\" />
+    <Folder Include="Queries\Employee\" />
+    <Folder Include="Queries\Employee\GetAll\" />
+    <Folder Include="Queries\Employee\GetById\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -58,4 +65,13 @@
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Commands\Employee\" />
+    <None Remove="Commands\Employee\AddEmployee\" />
+    <None Remove="Commands\Employee\DeleteEmployee\" />
+    <None Remove="Commands\Employee\UpdateEmployee\" />
+    <None Remove="Queries\Employee\" />
+    <None Remove="Queries\Employee\GetAll\" />
+    <None Remove="Queries\Employee\GetById\" />
+  </ItemGroup>
 </Project>

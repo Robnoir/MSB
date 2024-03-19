@@ -2,30 +2,31 @@
 using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 using Domain.Models.Employee;
+using Domain.Models.EmployeeModel;
 
 namespace Infrastructure.Repositories.EmployeeRepo
 {
-	public class EmployeeRepository : IEmployeeRepository
-	{
+    public class EmployeeRepository : IEmployeeRepository
+    {
         private readonly MSB_Database _database;
         public EmployeeRepository(MSB_Database mSB_Database)
         {
             _database = mSB_Database;
         }
 
-       public async Task<IEnumerable<EmployeeModel>> GetEmployeesAsync()
-       {
-           return await _database.Employees.ToListAsync();
-       }
+        public async Task<IEnumerable<EmployeeModel>> GetEmployeesAsync()
+        {
+            return await _database.Employees.ToListAsync();
+        }
 
         public async Task<EmployeeModel> GetEmployeeAsync(Guid id)
         {
-           return await _database.Employees.FindAsync(id);
+            return await _database.Employees.FindAsync(id);
         }
 
         public async Task<EmployeeModel> CreateEmployeeAsync(EmployeeModel employee)
         {
-           _database.Employees.Add(employee);
+            _database.Employees.Add(employee);
             await _database.SaveChangesAsync();
             return employee;
         }
@@ -66,6 +67,18 @@ namespace Infrastructure.Repositories.EmployeeRepo
 
             return true;
         }
+        public async Task<EmployeeModel> GetEmployeeByIdAsync(Guid employeeId)
+        {
+            try
+            {
+                EmployeeModel employee = await _database.Employees.FirstOrDefaultAsync(e => e.EmployeeId == employeeId);
+                return employee;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error occurred while fetching employee by ID", ex);
+            }
+        }
+
     }
 }
-
