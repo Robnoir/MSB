@@ -24,8 +24,8 @@ namespace Application.Validators.OrderValidator
             RuleFor(order => order.UserId)
                 .NotEmpty().WithMessage("User Id cannot be empty");
 
-            RuleFor(order => order.AdressId)
-                .NotEmpty().WithMessage("Address Id cannot be empty");
+            //RuleFor(order => order.AdressId)
+            //    .NotEmpty().WithMessage("Address Id cannot be empty");
 
             RuleFor(order => order.RepairNotes)
                 .MaximumLength(200).WithMessage("Repair Notes can't be longer than 200 characters");

@@ -12,7 +12,7 @@ namespace Application.Commands.Warehouse.AddWarehouse
                 WarehouseId = Guid.NewGuid(),
                 WarehouseName = request.NewWarehouse.WarehouseName,
                 AdressId = request.NewWarehouse.AdressId,
-                ShelfId = request.NewWarehouse.ShelfId
+                // ShelfId = request.NewWarehouse.ShelfId
             };
 
             return warehouseToCreate;

@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Models.Warehouse
 {
@@ -9,12 +8,14 @@ namespace Domain.Models.Warehouse
         public Guid WarehouseId { get; set; }
         public string WarehouseName { get; set; } = string.Empty;
 
-        [ForeignKey("AdressId")] // Return Address
-        public int AdressId { get; set; }
-        public Address.AddressModel Address { get; set; } // Inconsistency in naming/namespace Address(Model)/UserModel
+        // Commented out to avoid errors
 
-        [ForeignKey("ShelfId")] // Return Shelf
-        public int ShelfId { get; set; }
-        public Shelf.ShelfModel Shelf { get; set; } // Fix before pushing
+        //[ForeignKey("AdressId")] // Return Address
+        //public Guid AdressId { get; set; }
+        //public Address.AddressModel Address { get; set; } // Inconsistency in naming/namespace Address(Model)/UserModel
+
+        //[ForeignKey("ShelfId")] // Return Shelf
+        //public Guid ShelfId { get; set; }
+        //public Shelf.ShelfModel Shelf { get; set; } // Fix before pushing
     }
 }

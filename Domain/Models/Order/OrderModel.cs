@@ -12,7 +12,7 @@ namespace Domain.Models.OrderModel
         public decimal TotalCost { get; set; }
         public string OrderStatus { get; set; } = string.Empty;
         [ForeignKey("UserId")] // Inconsistency in naming/UserId is named Id in UserModel
-        public int UserId { get; set; }
+        public Guid UserId { get; set; }
         public UserModel.UserModel User { get; set; }
 
         // [ForeignKey("CarId")]
@@ -27,9 +27,9 @@ namespace Domain.Models.OrderModel
         // public int WarehouseId { get; set; }
         // public Warehouse.WarehouseDto Warehouse { get; set; }
 
-        [ForeignKey("AdressId")] // Return Address
-        public int AdressId { get; set; }
-        public Address.AddressModel Address { get; set; } // Inconsistency in naming/namespace Address(Model)/UserModel
+        //[ForeignKey("AdressId")] // Return Address
+        //public int AdressId { get; set; }
+        //public Address.AddressModel Address { get; set; } // Inconsistency in naming/namespace Address(Model)/UserModel
 
         public string RepairNotes { get; set; } = "No notes";
 
