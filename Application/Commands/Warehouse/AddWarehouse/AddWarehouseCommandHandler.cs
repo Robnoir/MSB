@@ -11,7 +11,7 @@ namespace Application.Commands.Warehouse.AddWarehouse
             {
                 WarehouseId = Guid.NewGuid(),
                 WarehouseName = request.NewWarehouse.WarehouseName,
-                AdressId = request.NewWarehouse.AdressId,
+                // AdressId = request.NewWarehouse.AdressId,
                 // ShelfId = request.NewWarehouse.ShelfId
             };
 
