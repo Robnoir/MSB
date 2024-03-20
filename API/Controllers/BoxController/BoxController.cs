@@ -32,7 +32,7 @@ namespace API.Controllers.BoxController
                 Stock = box.Stock,
                 ImageUrl = box.ImageUrl,
                 UserNotes = box.UserNotes,
-                // Order = box.Order,
+                Order = box.Order,
                 Size = box.Size,
 
             };
@@ -52,7 +52,7 @@ namespace API.Controllers.BoxController
                 Stock = box.Stock,
                 ImageUrl = box.ImageUrl,
                 UserNotes = box.UserNotes,
-                // Order = box.Order,
+                Order = box.Order,
                 Size = box.Size,
             });
             return Ok(boxDtos);

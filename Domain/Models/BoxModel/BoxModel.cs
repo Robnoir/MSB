@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Models.BoxModel
 {
@@ -11,7 +12,9 @@ namespace Domain.Models.BoxModel
         public int Stock { get; set; }
         public string ImageUrl { get; set; } = string.Empty;
         public string UserNotes { get; set; } = string.Empty;
-        // public Order { get; set; };
+        [ForeignKey("OrderId")]
+        public Guid OrderId { get; set; }
+        public OrderModel.OrderModel Order { get; set; }
         public string Size { get; set; } = string.Empty;
 
     }
