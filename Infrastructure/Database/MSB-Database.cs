@@ -1,13 +1,7 @@
 ﻿using Domain.Models.Address;
+using Domain.Models.BoxModel;
 using Domain.Models.UserModel;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Database
 {
@@ -21,6 +15,7 @@ namespace Infrastructure.Database
 
         public virtual DbSet<UserModel> Users { get; set; }
         public virtual DbSet<AddressModel> Addresses { get; set; }
+        public virtual DbSet<BoxModel> Boxes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

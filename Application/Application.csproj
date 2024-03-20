@@ -37,7 +37,6 @@
     <Folder Include="Queries\User\GetById\" />
     <Folder Include="Queries\Warehouse\GetAll\" />
     <Folder Include="Queries\Warehouse\GetByID\" />
-    <Folder Include="Validators\" />
   </ItemGroup>
 
   <ItemGroup>

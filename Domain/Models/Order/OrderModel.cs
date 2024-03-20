@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Domain.Models.OrderModel
+﻿namespace Domain.Models.OrderModel
 {
-    internal class OrderModel
+    public class OrderModel
     {
     }
 }
