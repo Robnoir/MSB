@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Database;
+using Infrastructure.Repositories.BoxRepo;
 using Infrastructure.Repositories.OrderRepo;
 using Infrastructure.Repositories.ShelfRepo;
 using Infrastructure.Repositories.UserRepo;
@@ -17,6 +18,7 @@ namespace Infrastructure
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IWarehouseRepository, WarehouseRepository>();
             services.AddScoped<IShelfRepository, ShelfRepository>();
+            services.AddScoped<IBoxRepository, BoxRepository>();
 
             services.AddDbContext<MSB_Database>(options =>
                    options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
