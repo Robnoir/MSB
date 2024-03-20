@@ -13,7 +13,7 @@ namespace API.Controllers.Address
     [ApiController]
     public class AddressController : ControllerBase
     {
-        
+
         private readonly IMediator _mediator;
 
         public AddressController(IMediator mediator)

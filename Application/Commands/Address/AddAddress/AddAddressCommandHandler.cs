@@ -22,7 +22,7 @@ namespace Application.Commands.Address.AddAddress
                 Country = request.NewAddress.Country,
                 Latitude = request.NewAddress.Latitude,
 
-               
+
             };
 
             return addressToCreate;
