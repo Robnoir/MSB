@@ -14,10 +14,10 @@ namespace Infrastructure.Repositories.OrderRepo
 
         public async Task<OrderModel> AddOrderAsync(OrderModel order)
         {
-            _database.Orders.AddAsync(order);
-            _database.SaveChangesAsync();
+            await _database.Orders.AddAsync(order);
+            await _database.SaveChangesAsync();
 
-            return await Task.FromResult(order);
+            return order;
         }
 
         public async Task<IEnumerable<OrderModel>> GetAllOrdersAsync()
@@ -33,7 +33,7 @@ namespace Infrastructure.Repositories.OrderRepo
         public async Task<OrderModel> UpdateOrderAsync(OrderModel order)
         {
             _database.Orders.Update(order);
-            _database.SaveChangesAsync();
+            await _database.SaveChangesAsync();
 
             return order;
         }
@@ -46,6 +46,24 @@ namespace Infrastructure.Repositories.OrderRepo
                 _database.Orders.Remove(order);
                 await _database.SaveChangesAsync();
             }
+        }
+
+        public async Task<int> GetHighestOrderNumberAsync()
+        {
+            if (await _database.Orders.AnyAsync())
+            {
+                return await _database.Orders.MaxAsync(o => o.OrderNumber);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public async Task CreateOrderAsync(OrderModel newOrder)
+        {
+            await _database.Orders.AddAsync(newOrder);
+            await _database.SaveChangesAsync();
         }
     }
 }

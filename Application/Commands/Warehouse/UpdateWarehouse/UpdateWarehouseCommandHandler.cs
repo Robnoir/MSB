@@ -15,7 +15,17 @@ namespace Application.Commands.Warehouse.UpdateWarehouse
 
         public async Task<WarehouseModel> Handle(UpdateWarehouseCommand request, CancellationToken cancellationToken)
         {
-            return await _warehouseRepository.UpdateWarehouseAsync(request.Warehouse);
+            WarehouseModel warehouseToUpdate = new WarehouseModel
+            {
+                WarehouseId = request.Warehouse.WarehouseId,
+                WarehouseName = request.Warehouse.WarehouseName,
+                // AddressId = request.Warehouse.AddressId, // Comment until implemented
+                // ShelfId = request.Warehouse.ShelfId // Comment until implemented
+
+
+            };
+
+            return await _warehouseRepository.UpdateWarehouseAsync(warehouseToUpdate);
         }
     }
 }
