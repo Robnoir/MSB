@@ -1,14 +1,15 @@
-﻿using Domain.Models.Warehouse;
+﻿using Application.Dto.Warehouse;
+using Domain.Models.Warehouse;
 using MediatR;
 
 namespace Application.Commands.Warehouse.AddWarehouse
 {
     public class AddWarehouseCommand : IRequest<WarehouseModel>
     {
-        public AddWarehouseCommand(WarehouseModel newWarehouse)
+        public AddWarehouseCommand(WarehouseDto newWarehouse)
         {
             NewWarehouse = newWarehouse;
         }
-        public WarehouseModel NewWarehouse { get; }
+        public WarehouseDto NewWarehouse { get; }
     }
 }

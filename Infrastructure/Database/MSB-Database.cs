@@ -1,5 +1,6 @@
 ﻿using Domain.Models.Address;
 using Domain.Models.OrderModel;
+using Domain.Models.Shelf;
 using Domain.Models.UserModel;
 using Domain.Models.Warehouse;
 using Microsoft.EntityFrameworkCore;
@@ -13,11 +14,11 @@ namespace Infrastructure.Database
         {
         }
 
-
         public virtual DbSet<UserModel> Users { get; set; }
         public virtual DbSet<AddressModel> Addresses { get; set; }
         public virtual DbSet<OrderModel> Orders { get; set; }
         public virtual DbSet<WarehouseModel> Warehouses { get; set; }
+        public virtual DbSet<ShelfModel> Shelves { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -44,12 +45,27 @@ namespace Infrastructure.Database
 
             modelBuilder.Entity<OrderModel>().HasData(orders);
 
+            var warehouses = new WarehouseModel[]
+            {
+                new WarehouseModel { WarehouseId = Guid.NewGuid(), WarehouseName = "Warehouse 1"},
+                new WarehouseModel { WarehouseId = Guid.NewGuid(), WarehouseName = "Warehouse 2"},
+                new WarehouseModel { WarehouseId = Guid.NewGuid(), WarehouseName = "Warehouse 3"},
+                new WarehouseModel { WarehouseId = Guid.NewGuid(), WarehouseName = "Warehouse 4"},
+            };
 
+            modelBuilder.Entity<WarehouseModel>().HasData(warehouses);
+
+            var shelves = new ShelfModel[]
+            {
+                new ShelfModel { ShelfId = Guid.NewGuid(), ShelfRow = 1, ShelfColumn = 1, Occupancy = true ,WarehouseId = warehouses[0].WarehouseId},
+                new ShelfModel { ShelfId = Guid.NewGuid(), ShelfRow = 2, ShelfColumn = 2, Occupancy = true ,WarehouseId = warehouses[1].WarehouseId},
+                new ShelfModel { ShelfId = Guid.NewGuid(), ShelfRow = 3, ShelfColumn = 3, Occupancy = true ,WarehouseId = warehouses[2].WarehouseId},
+                new ShelfModel { ShelfId = Guid.NewGuid(), ShelfRow = 4, ShelfColumn = 4, Occupancy = true ,WarehouseId = warehouses[3].WarehouseId},
+            };
+
+            modelBuilder.Entity<ShelfModel>().HasData(shelves);
 
             base.OnModelCreating(modelBuilder);
         }
-
-
-
     }
 }

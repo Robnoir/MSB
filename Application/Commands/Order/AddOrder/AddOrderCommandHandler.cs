@@ -1,10 +1,16 @@
 ﻿using Domain.Models.OrderModel;
+using Infrastructure.Repositories.OrderRepo;
 using MediatR;
 
 namespace Application.Commands.Order.AddOrder
 {
     public class AddOrderCommandHandler : IRequestHandler<AddOrderCommand, OrderModel>
     {
+        private readonly IOrderRepository _orderRepository;
+        public AddOrderCommandHandler(IOrderRepository orderRepository)
+        {
+            _orderRepository = orderRepository;
+        }
         public async Task<OrderModel> Handle(AddOrderCommand request, CancellationToken cancellationToken)
         {
             OrderModel orderToCreate = new()

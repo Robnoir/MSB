@@ -27,6 +27,8 @@
     <Folder Include="Dto\User\" />
     <Folder Include="Queries\User\GetAll\" />
     <Folder Include="Queries\User\GetById\" />
+    <Folder Include="Validators\ShelfValidator\" />
+    <Folder Include="Validators\WarehouseValidator\" />
   </ItemGroup>
 
   <ItemGroup>
