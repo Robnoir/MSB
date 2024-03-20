@@ -5,6 +5,8 @@ using Domain.Models.Shelf;
 using Domain.Models.UserModel;
 using Domain.Models.Warehouse;
 using Microsoft.EntityFrameworkCore;
+using System.Drawing;
+using System.Reflection.Emit;
 
 namespace Infrastructure.Database
 {
@@ -44,6 +46,17 @@ namespace Infrastructure.Database
                 new OrderModel { OrderId = Guid.NewGuid(), UserId = users[3].Id, OrderDate = DateTime.Now, TotalCost = 4000, OrderStatus = "Created"},
             };
             modelBuilder.Entity<OrderModel>().HasData(orders);
+
+            // Mock data for AddressModels
+            var addresses = new AddressModel[]
+            {
+                  new AddressModel { AddressId = Guid.NewGuid(), StreetName = "Maple Street", Apartment = "Apt 3B", ZipCode = "12345", Floor = "2nd", City = "Springfield", State = "Ohio", Country = "USA", Latitude = "39.9266", Longitude = "-83.8064" },
+                  new AddressModel { AddressId = Guid.NewGuid(), StreetName = "Oak Avenue", Apartment = "Apt 2A", ZipCode = "54321", Floor = "Ground Floor", City = "Willow Creek", State = "California", Country = "USA", Latitude = "37.7833", Longitude = "-122.4167" },
+                  new AddressModel { AddressId = Guid.NewGuid(), StreetName = "Elm Street", Apartment = "Apt 5C", ZipCode = "98765", Floor = "3rd", City = "Oakville", State = "New York", Country = "USA", Latitude = "40.7128", Longitude = "-74.0060" },
+                  new AddressModel { AddressId = Guid.NewGuid(), StreetName = "Pine Street", Apartment = "Apt 10D", ZipCode = "67890", Floor = "4th", City = "Cedarville", State = "Texas", Country = "USA", Latitude = "31.9686", Longitude = "-99.9018" }
+            };
+
+            modelBuilder.Entity<AddressModel>().HasData(addresses);
 
             // Mock data for BoxModel
             var boxes = new BoxModel[]

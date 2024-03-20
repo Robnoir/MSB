@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Database;
+using Infrastructure.Repositories.AddressRepo;
 using Infrastructure.Repositories.BoxRepo;
 using Infrastructure.Repositories.OrderRepo;
 using Infrastructure.Repositories.ShelfRepo;
@@ -17,6 +18,7 @@ namespace Infrastructure
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IWarehouseRepository, WarehouseRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
             services.AddScoped<IShelfRepository, ShelfRepository>();
             services.AddScoped<IBoxRepository, BoxRepository>();
 
