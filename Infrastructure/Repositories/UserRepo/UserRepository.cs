@@ -1,4 +1,4 @@
-﻿using Domain.Models.EmployeeModel;
+﻿using Domain.Models.User;
 using Infrastructure.Database;
 using System;
 using System.Collections.Generic;

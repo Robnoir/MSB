@@ -32,8 +32,10 @@
 
   <ItemGroup>
     <None Remove="Repositories\EmployeeRepo\" />
+    <None Remove="Repositories\DriverRepo\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositories\EmployeeRepo\" />
+    <Folder Include="Repositories\DriverRepo\" />
   </ItemGroup>
 </Project>

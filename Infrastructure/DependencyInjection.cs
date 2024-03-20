@@ -1,4 +1,5 @@
 ﻿using Infrastructure.Database;
+using Infrastructure.Repositories.DriverRepo;
 using Infrastructure.Repositories.EmployeeRepo;
 using Infrastructure.Repositories.UserRepo;
 using Microsoft.EntityFrameworkCore;
@@ -18,6 +19,7 @@ namespace Infrastructure
         {
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IDriverRepository, DriverRepository>();
 
             services.AddDbContext<MSB_Database>(options =>
                    options.UseMySql(configuration.GetConnectionString("DefaultConnection"),

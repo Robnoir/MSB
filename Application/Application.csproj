@@ -45,6 +45,13 @@
     <Folder Include="Queries\Employee\" />
     <Folder Include="Queries\Employee\GetAll\" />
     <Folder Include="Queries\Employee\GetById\" />
+    <Folder Include="Commands\Driver\" />
+    <Folder Include="Commands\Driver\AddDriver\" />
+    <Folder Include="Commands\Driver\DeleteDriver\" />
+    <Folder Include="Commands\Driver\UpdateDriver\" />
+    <Folder Include="Queries\Driver\" />
+    <Folder Include="Queries\Driver\GetAll\" />
+    <Folder Include="Queries\Driver\GetById\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -73,5 +80,12 @@
     <None Remove="Queries\Employee\" />
     <None Remove="Queries\Employee\GetAll\" />
     <None Remove="Queries\Employee\GetById\" />
+    <None Remove="Commands\Driver\" />
+    <None Remove="Commands\Driver\AddDriver\" />
+    <None Remove="Commands\Driver\DeleteDriver\" />
+    <None Remove="Commands\Driver\UpdateDriver\" />
+    <None Remove="Queries\Driver\" />
+    <None Remove="Queries\Driver\GetAll\" />
+    <None Remove="Queries\Driver\GetById\" />
   </ItemGroup>
 </Project>

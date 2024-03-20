@@ -43,4 +43,10 @@
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Controllers\Driver\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\Driver\" />
+  </ItemGroup>
 </Project>

@@ -2,7 +2,6 @@
 using Application.Dto.Employee;
 using Application.Dto.User;
 using Domain.Models.Employee;
-using Domain.Models.EmployeeModel;
 using MediatR;
 
 namespace Application.Commands.Employee.UpdateEmployee

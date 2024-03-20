@@ -1,6 +1,7 @@
 ﻿using Domain.Models.Address;
+using Domain.Models.Driver;
 using Domain.Models.Employee;
-using Domain.Models.EmployeeModel;
+using Domain.Models.User;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
@@ -23,6 +24,7 @@ namespace Infrastructure.Database
         public virtual DbSet<UserModel> Users { get; set; }
         public virtual DbSet<EmployeeModel> Employees { get; set; }
         public virtual DbSet<AddressModel> Addresses { get; set; }
+        public virtual DbSet<DriverModel> Drivers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

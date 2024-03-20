@@ -1,6 +1,5 @@
 ﻿using System;
 using Domain.Models.Employee;
-using Domain.Models.EmployeeModel;
 using MediatR;
 
 namespace Application.Commands.Employee.DeleteEmployee

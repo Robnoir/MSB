@@ -1,6 +1,6 @@
 ﻿using Application.Dto.Employee;
 using Domain.Models.Employee;
-using Domain.Models.EmployeeModel;
+using Domain.Models.User;
 using Infrastructure.Repositories.EmployeeRepo;
 using MediatR;
 using Microsoft.AspNetCore.Http;

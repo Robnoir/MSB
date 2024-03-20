@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\WareHouse\" />
+    <Folder Include="Models\Driver\" />
     <Folder Include="Models\Employee\" />
   </ItemGroup>
 
@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Models\Driver\" />
     <None Remove="Models\Employee\" />
   </ItemGroup>
 </Project>
