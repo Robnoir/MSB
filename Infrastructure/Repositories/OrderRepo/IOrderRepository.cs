@@ -9,5 +9,7 @@ namespace Infrastructure.Repositories.OrderRepo
         Task<OrderModel> GetOrderByIdAsync(Guid orderId);
         Task<OrderModel> UpdateOrderAsync(OrderModel order);
         Task DeleteOrderAsync(Guid orderId);
+        Task CreateOrderAsync(OrderModel newOrder);
+        Task<int> GetHighestOrderNumberAsync();
     }
 }

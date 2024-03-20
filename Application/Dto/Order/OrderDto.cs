@@ -5,6 +5,7 @@ namespace Application.Dto.Order
     public class OrderDto
     {
         [Required] public Guid OrderId { get; set; }
+        [Required] public int OrderNumber { get; set; }
         [Required] public DateTime OrderDate { get; set; }
         [Required] public decimal TotalCost { get; set; }
         public string? OrderStatus { get; set; }
