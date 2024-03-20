@@ -50,38 +50,50 @@ namespace Infrastructure.Database
             // Mock data for BoxModel
             var boxes = new BoxModel[]
             {
-                new BoxModel {  BoxId = Guid.NewGuid(),
-                                Type = "Recycled",
-                                TimesUsed = 2,
-                                Stock = 20,
-                                ImageUrl = "https://pngimg.com/uploads/spongebob/spongebob_PNG11.png",
-                                UserNotes = "Bubbles",
-                                OrderId = orders[0].OrderId,
-                                Size = "M" },
-                new BoxModel {  BoxId = Guid.NewGuid(),
-                                Type = "Recycled",
-                                TimesUsed = 0,
-                                Stock = 10,
-                                ImageUrl = "https://cdn.shopify.com/s/files/1/2393/5817/files/6eaedeb6-dd5a-4597-8976-247f08418c99.jpg?v=1692953727",
-                                UserNotes = "Burgers",
-                                OrderId = orders[1].OrderId,
-                                Size = "XL" },
-                new BoxModel {  BoxId = Guid.NewGuid(),
-                                Type = "Recycled",
-                                TimesUsed = 1,
-                                Stock = 15,
-                                ImageUrl = "https://cdn.shopify.com/s/files/1/2393/5817/files/SB_ES_Squid_002_EA_REV-S.jpg?v=1692953746",
-                                UserNotes = "Money",
-                                OrderId = orders[2].OrderId,
-                                Size = "L" },
-                new BoxModel {  BoxId = Guid.NewGuid(),
-                                Type = "Recycled",
-                                TimesUsed = 2,
-                                Stock = 3,
-                                ImageUrl = "https://cdn.shopify.com/s/files/1/2393/5817/files/renditionfile_6.jpg?v=1692953765",
-                                UserNotes = "Chestnuts",
-                                OrderId = orders[3].OrderId,
-                                Size = "S" }
+                new BoxModel
+                {
+                    BoxId = Guid.NewGuid(),
+                    Type = "Recycled",
+                    TimesUsed = 2,
+                    Stock = 20,
+                    ImageUrl = "https://pngimg.com/uploads/spongebob/spongebob_PNG11.png",
+                    UserNotes = "Bubbles",
+                    OrderId = orders[0].OrderId,
+                    Size = "M"
+                },
+                new BoxModel
+                {
+                    BoxId = Guid.NewGuid(),
+                    Type = "Recycled",
+                    TimesUsed = 0,
+                    Stock = 10,
+                    ImageUrl = "https://cdn.shopify.com/s/files/1/2393/5817/files/6eaedeb6-dd5a-4597-8976-247f08418c99.jpg?v=1692953727",
+                    UserNotes = "Burgers",
+                    OrderId = orders[1].OrderId,
+                    Size = "XL"
+                },
+                new BoxModel
+                {
+                    BoxId = Guid.NewGuid(),
+                    Type = "Recycled",
+                    TimesUsed = 1,
+                    Stock = 15,
+                    ImageUrl = "https://cdn.shopify.com/s/files/1/2393/5817/files/SB_ES_Squid_002_EA_REV-S.jpg?v=1692953746",
+                    UserNotes = "Money",
+                    OrderId = orders[2].OrderId,
+                    Size = "L"
+                },
+                new BoxModel
+                {
+                    BoxId = Guid.NewGuid(),
+                    Type = "Recycled",
+                    TimesUsed = 2,
+                    Stock = 3,
+                    ImageUrl = "https://cdn.shopify.com/s/files/1/2393/5817/files/renditionfile_6.jpg?v=1692953765",
+                    UserNotes = "Chestnuts",
+                    OrderId = orders[3].OrderId,
+                    Size = "S"
+                }
             };
 
             modelBuilder.Entity<BoxModel>().HasData(boxes);
