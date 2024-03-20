@@ -1,12 +1,13 @@
-﻿using Domain.Models.Warehouse;
+﻿using Application.Dto.Warehouse;
+using Domain.Models.Warehouse;
 using MediatR;
 
 namespace Application.Commands.Warehouse.UpdateWarehouse
 {
     public class UpdateWarehouseCommand : IRequest<WarehouseModel>
     {
-        public WarehouseModel Warehouse { get; set; }
-        public UpdateWarehouseCommand(WarehouseModel warehouse)
+        public WarehouseDto Warehouse { get; set; }
+        public UpdateWarehouseCommand(WarehouseDto warehouse)
         {
             Warehouse = warehouse;
         }

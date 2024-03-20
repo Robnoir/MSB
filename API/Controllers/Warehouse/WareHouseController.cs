@@ -1,6 +1,7 @@
 ﻿using Application.Commands.Warehouse.AddWarehouse;
 using Application.Commands.Warehouse.DeleteWarehouse;
 using Application.Commands.Warehouse.UpdateWarehouse;
+using Application.Dto.Warehouse;
 using Application.Queries.Warehouse.GetAll;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -19,10 +20,15 @@ namespace API.Controllers.Warehouse
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddWarehouse([FromBody] AddWarehouseCommand command)
+        public async Task<ActionResult<WarehouseDto>> AddWarehouse([FromBody] AddWarehouseCommand command)
         {
-            var result = await _mediator.Send(command);
-            return CreatedAtAction(nameof(AddWarehouse), result);
+            var warehouse = await _mediator.Send(command);
+            var warehouseDto = new WarehouseDto
+            {
+                WarehouseId = warehouse.WarehouseId,
+                WarehouseName = warehouse.WarehouseName
+            };
+            return CreatedAtAction(nameof(AddWarehouse), warehouseDto);
         }
 
         [HttpDelete("{id}")]
@@ -33,18 +39,28 @@ namespace API.Controllers.Warehouse
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateWarehouse([FromBody] UpdateWarehouseCommand command)
+        public async Task<ActionResult<WarehouseDto>> UpdateWarehouse([FromBody] UpdateWarehouseCommand command)
         {
-            var result = await _mediator.Send(command);
-            return Ok(result);
+            var warehouse = await _mediator.Send(command);
+            var warehouseDto = new WarehouseDto
+            {
+                WarehouseId = warehouse.WarehouseId,
+                WarehouseName = warehouse.WarehouseName
+            };
+            return Ok(warehouseDto);
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllWarehouses()
+        public async Task<ActionResult<IEnumerable<WarehouseDto>>> GetAllWarehouses()
         {
             var query = new GetAllWarehousesQuery();
-            var result = await _mediator.Send(query);
-            return Ok(result);
+            var warehouses = await _mediator.Send(query);
+            var warehouseDtos = warehouses.Select(warehouse => new WarehouseDto
+            {
+                WarehouseId = warehouse.WarehouseId,
+                WarehouseName = warehouse.WarehouseName
+            });
+            return Ok(warehouseDtos);
         }
     }
 }

@@ -27,6 +27,8 @@
     <Folder Include="Dto\User\" />
     <Folder Include="Queries\User\GetAll\" />
     <Folder Include="Queries\User\GetById\" />
+    <Folder Include="Validators\ShelfValidator\" />
+    <Folder Include="Validators\WarehouseValidator\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +41,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="MySql.Data" Version="8.3.0" />
     <PackageReference Include="System.Diagnostics.Tools" Version="4.3.0" />
   </ItemGroup>
 

@@ -1,14 +1,15 @@
-﻿using Domain.Models.OrderModel;
+﻿using Application.Dto.Order;
+using Domain.Models.OrderModel;
 using MediatR;
 
 namespace Application.Commands.Order.AddOrder
 {
     public class AddOrderCommand : IRequest<OrderModel>
     {
-        public AddOrderCommand(OrderModel newOrder)
+        public AddOrderCommand(OrderDto newOrder)
         {
             NewOrder = newOrder;
         }
-        public OrderModel NewOrder { get; }
+        public OrderDto NewOrder { get; }
     }
 }

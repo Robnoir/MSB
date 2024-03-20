@@ -15,7 +15,17 @@ namespace Application.Commands.Order.UpdateOrder
 
         public async Task<OrderModel> Handle(UpdateOrderCommand request, CancellationToken cancellationToken)
         {
-            return await _orderRepository.UpdateOrderAsync(request.Order);
+            OrderModel orderToUpdate = new OrderModel
+            {
+                OrderId = request.Order.OrderId,
+                OrderDate = request.Order.OrderDate,
+                TotalCost = request.Order.TotalCost,
+                OrderStatus = request.Order.OrderStatus,
+                UserId = request.Order.UserId,
+                RepairNotes = request.Order.RepairNotes
+            };
+
+            return await _orderRepository.UpdateOrderAsync(orderToUpdate);
         }
     }
 }
