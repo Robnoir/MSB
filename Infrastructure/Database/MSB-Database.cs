@@ -95,7 +95,7 @@ namespace Infrastructure.Database
             };
 
             modelBuilder.Entity<BoxModel>().HasData(boxes);
-            
+
             // Mock data for WarehouseModels
             var warehouses = new WarehouseModel[]
             {
