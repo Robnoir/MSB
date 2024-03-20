@@ -7,6 +7,7 @@ namespace Domain.Models.OrderModel
     {
         [Key]
         public Guid OrderId { get; set; }
+        public int OrderNumber { get; set; }
 
         public DateTime OrderDate { get; set; }
         public decimal TotalCost { get; set; }
