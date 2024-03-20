@@ -16,6 +16,8 @@ namespace Infrastructure.Repositories.UserRepo
 
         Task<List<UserModels>> GetAllUsersAsync();
 
+        Task<UserModels> GetByEmailAsync(string email);
+
 
 
     }

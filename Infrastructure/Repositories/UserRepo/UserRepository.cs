@@ -43,6 +43,15 @@ namespace Infrastructure.Repositories.UserRepo
             return await _database.Users.FindAsync(id);
         }
 
+       public async Task<UserModels> GetByEmailAsync(string email)
+        {
+            if(string.IsNullOrWhiteSpace(email))
+            {
+                throw new ArgumentException("Email cannot be null or empty", nameof(email));
+            }
+            return await _database.Users.FirstOrDefaultAsync(x => x.Email.ToLower() == email.ToLower());
+        }
+
         public async Task UpdateUserAsync(UserModels user)
         {
             _database.Users.Update(user);
