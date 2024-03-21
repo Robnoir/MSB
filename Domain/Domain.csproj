@@ -9,6 +9,7 @@
   <ItemGroup>
     <Folder Include="Models\Driver\" />
     <Folder Include="Models\Employee\" />
+    <Folder Include="Models\Car\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,5 +19,6 @@
   <ItemGroup>
     <None Remove="Models\Driver\" />
     <None Remove="Models\Employee\" />
+    <None Remove="Models\Car\" />
   </ItemGroup>
 </Project>

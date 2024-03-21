@@ -45,8 +45,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Controllers\Driver\" />
+    <None Remove="Controllers\Car\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\Driver\" />
+    <Folder Include="Controllers\Car\" />
   </ItemGroup>
 </Project>
