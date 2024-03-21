@@ -3,10 +3,16 @@ using Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole(); // Adds logging to the console.
+builder.Logging.AddDebug(); // Adds logging to the debug window.
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+}); ;
 builder.Services.AddApplication();
 
 builder.Services.AddInfrastructure(builder.Configuration);

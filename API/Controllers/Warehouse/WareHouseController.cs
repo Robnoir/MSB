@@ -19,7 +19,7 @@ namespace API.Controllers.Warehouse
             _mediator = mediator;
         }
 
-        [HttpPost]
+        [HttpPost("Add Warehouse")]
         public async Task<ActionResult<WarehouseDto>> AddWarehouse([FromBody] AddWarehouseCommand command)
         {
             var warehouse = await _mediator.Send(command);
@@ -38,7 +38,7 @@ namespace API.Controllers.Warehouse
             return NoContent();
         }
 
-        [HttpPut]
+        [HttpPut("Update Warehouse")]
         public async Task<ActionResult<WarehouseDto>> UpdateWarehouse([FromBody] UpdateWarehouseCommand command)
         {
             var warehouse = await _mediator.Send(command);
@@ -50,7 +50,7 @@ namespace API.Controllers.Warehouse
             return Ok(warehouseDto);
         }
 
-        [HttpGet]
+        [HttpGet("Get All WareHouses")]
         public async Task<ActionResult<IEnumerable<WarehouseDto>>> GetAllWarehouses()
         {
             var query = new GetAllWarehousesQuery();

@@ -32,7 +32,7 @@ namespace API.Controllers.UserController
         //------------------------------------------------------------------------------------
 
         [HttpGet]
-        [Route("GetAllUsers")]
+        [Route("Get all users")]
         public async Task<IActionResult> GetAllUsers()
         {
             return Ok(await _mediator.Send(new GetAllUsersQuery()));
@@ -43,7 +43,7 @@ namespace API.Controllers.UserController
         //------------------------------------------------------------------------------------
 
         [HttpGet]
-        [Route("GetUserById")]
+        [Route("GetUser by Id")]
         public async Task<IActionResult> GetUserById(Guid UserId)
         {
             try
@@ -57,12 +57,12 @@ namespace API.Controllers.UserController
         }
         //------------------------------------------------------------------------------------
         [HttpPut]
-        [Route("updateUser")]
-        public async Task<IActionResult> UpdateUser([FromBody] UserDto updatedUserDto, Guid updatedUserId, string newPassword)
+        [Route("(Update User")]
+        public async Task<IActionResult> UpdateUser([FromBody] UserDto updatedUserDto, Guid updatedUserId)
         {
             try
             {
-                var command = new UpdateUserCommand(updatedUserDto, updatedUserId, newPassword);
+                var command = new UpdateUserCommand(updatedUserDto, updatedUserId);
                 var result = await _mediator.Send(command);
 
                 if (result == null)
@@ -86,7 +86,7 @@ namespace API.Controllers.UserController
 
         //------------------------------------------------------------------------------------
 
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete User by {id}")]
         public async Task<IActionResult> DeleteUserById(Guid id)
         {
             var user = await _mediator.Send(new DeleteUserCommand(id));
