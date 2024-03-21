@@ -24,17 +24,44 @@ namespace Infrastructure.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+           
             // Mock data for UserModels
             var users = new UserModels[]
             {
-            new UserModels { UserId = Guid.NewGuid(), Email = "Adam@gmail.com", FirstName = "Adam", LastName = "Andersson", PhoneNumber = 0735097384, PasswordHash = "Adam123" },
+            new UserModels { UserId = Guid.NewGuid(), Email = "Adam@gmail.com", FirstName = "Adam", LastName = "Andersson", PhoneNumber = 0735097384, PasswordHash = "Adam123",  },
             new UserModels { UserId = Guid.NewGuid(), Email = "Bertil@gmail.com", FirstName = "Bertil", LastName = "Bengtsson", PhoneNumber = 0735097384, PasswordHash = "Bertil123" },
             new UserModels { UserId = Guid.NewGuid(), Email = "Cecar@gmail.com", FirstName = "Cecar", LastName = "Citron", PhoneNumber = 0735097384, PasswordHash = "Cecar123" },
             new UserModels { UserId = Guid.NewGuid(), Email = "Erik@gmail.com", FirstName = "Erik", LastName = "Eriksson", PhoneNumber = 0735097384, PasswordHash = "Erik123" },
-            new UserModels { UserId = Guid.NewGuid(), Email = "Fredrik@gmail.com", FirstName = "Fredrik", LastName = "Fredriksson", PhoneNumber = 0735097384, PasswordHash = "Fredrik123" },
-            new UserModels { UserId = Guid.NewGuid(), Email = "Gustav@gmail.com", FirstName = "Gustav", LastName = "Gustavsson", PhoneNumber = 0735097384, PasswordHash = "Gustav123" }
             };
+            
+
+            // Mock data for AddressModels
+            var addresses = new AddressModel[]
+            {
+                  new AddressModel { AddressId = Guid.NewGuid(), StreetName = "Maple Street", StreetNumber ="21" , Apartment = "Apt 3B", ZipCode = "12345", Floor = "2nd", City = "Springfield", State = "Ohio", Country = "USA", Latitude = "39.9266", Longitude = "-83.8064" },
+                  new AddressModel { AddressId = Guid.NewGuid(), StreetName = "Oak Avenue", StreetNumber ="22" ,Apartment = "Apt 2A", ZipCode = "54321", Floor = "Ground Floor", City = "Willow Creek", State = "California", Country = "USA", Latitude = "37.7833", Longitude = "-122.4167" },
+                  new AddressModel { AddressId = Guid.NewGuid(), StreetName = "Elm Street", StreetNumber ="23" , Apartment = "Apt 5C", ZipCode = "98765", Floor = "3rd", City = "Oakville", State = "New York", Country = "USA", Latitude = "40.7128", Longitude = "-74.0060" },
+                  new AddressModel { AddressId = Guid.NewGuid(), StreetName = "Pine Street", StreetNumber ="24", Apartment = "Apt 10D", ZipCode = "67890", Floor = "4th", City = "Cedarville", State = "Texas", Country = "USA", Latitude = "31.9686", Longitude = "-99.9018" }
+            };
+
+            // Update ShelfModels with WarehouseId (due to circular dependency)
+
+            //for (int i = 0; i < users.Length; i++)
+            //{
+            //    users[i].Addresses = addresses[i].AddressId;
+            //}
             modelBuilder.Entity<UserModels>().HasData(users);
+            for (int i = 0; i < users.Length; i++)
+            {
+                addresses[i].UserId = users[i].UserId;
+            }
+            modelBuilder.Entity<AddressModel>().HasData(addresses);
+
+                modelBuilder.Entity<UserModels>()
+              .HasMany(u => u.Addresses)
+              .WithOne(a => a.User)
+              .HasForeignKey(a => a.UserId);
 
             // Mock data for OrderModels
             var orders = new OrderModel[]
@@ -46,18 +73,7 @@ namespace Infrastructure.Database
             };
             modelBuilder.Entity<OrderModel>().HasData(orders);
 
-            // Mock data for AddressModels
-            var addresses = new AddressModel[]
-            {
-                  new AddressModel { AddressId = Guid.NewGuid(),UserId = users[0].UserId , StreetName = "Maple Street", StreetNumber ="21" , Apartment = "Apt 3B", ZipCode = "12345", Floor = "2nd", City = "Springfield", State = "Ohio", Country = "USA", Latitude = "39.9266", Longitude = "-83.8064" },
-                  new AddressModel { AddressId = Guid.NewGuid(),UserId = users[1].UserId, StreetName = "Oak Avenue", StreetNumber ="22" ,Apartment = "Apt 2A", ZipCode = "54321", Floor = "Ground Floor", City = "Willow Creek", State = "California", Country = "USA", Latitude = "37.7833", Longitude = "-122.4167" },
-                  new AddressModel { AddressId = Guid.NewGuid(), UserId = users[2].UserId, StreetName = "Elm Street", StreetNumber ="23" , Apartment = "Apt 5C", ZipCode = "98765", Floor = "3rd", City = "Oakville", State = "New York", Country = "USA", Latitude = "40.7128", Longitude = "-74.0060" },
-                  new AddressModel { AddressId = Guid.NewGuid(), UserId = users[3].UserId, StreetName = "Pine Street", StreetNumber ="24", Apartment = "Apt 10D", ZipCode = "67890", Floor = "4th", City = "Cedarville", State = "Texas", Country = "USA", Latitude = "31.9686", Longitude = "-99.9018" }
-            };
-
-            modelBuilder.Entity<AddressModel>().HasData(addresses);
-
-            // Mock data for BoxModel
+            //Mock data for BoxModel
             var boxes = new BoxModel[]
             {
                 new BoxModel
@@ -131,10 +147,7 @@ namespace Infrastructure.Database
 
             
             
-            modelBuilder.Entity<UserModels>()
-                .HasMany(u => u.Addresses)
-                .WithOne(a => a.User)
-                .HasForeignKey(a => a.UserId);
+      
 
 
 
