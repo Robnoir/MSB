@@ -32,13 +32,9 @@ namespace Application.Commands.Users.UpdateUser
                 await _userRepository.UpdateUserAsync(user);
 
                 return user;
+             
 
-            }
-            catch (Exception ex)
-            {
-                var newException = new Exception($"An error occurred while updating user with ID: {command.UserId}", ex);
-                throw newException;
-            }
+
         }
 
 

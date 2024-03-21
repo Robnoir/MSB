@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -15,9 +13,10 @@ namespace Domain.Models.Address
 
         [Key]
         public Guid AddressID { get; set; }
-        public Guid UserId { get; set; }
+       
 
         [ForeignKey("UserId")]
+        public Guid UserId { get; set; }
         public UserModels User { get; set; }
 
         [Required]
