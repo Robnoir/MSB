@@ -25,7 +25,7 @@ namespace Application.Dto.Adress
         public double Latitude { get; set; }
         public double Longitude { get; set; }
 
-   
+
 
         // Address history functionality
         // Example: You may want to track changes to this address over time

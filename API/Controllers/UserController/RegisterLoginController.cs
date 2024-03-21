@@ -54,27 +54,27 @@ namespace API.Controllers.UserController
 
                 if (user != null)
                 {
-                    return Ok(new {Message = "Login Successful"});
+                    return Ok(new { Message = "Login Successful" });
                 }
                 else
                 {
-                    return Unauthorized(new {Message = "Invalid Email or Password"});
+                    return Unauthorized(new { Message = "Invalid Email or Password" });
                 }
 
             }
             catch (KeyNotFoundException)
             {
-                return NotFound(new {Message = "User not found"});
+                return NotFound(new { Message = "User not found" });
             }
             catch (UnauthorizedAccessException)
             {
-                return Unauthorized(new {Message = "Invalid Email or Password"});
+                return Unauthorized(new { Message = "Invalid Email or Password" });
             }
             catch (Exception ex)
             {
-                return BadRequest(new {Message = ex.Message});
+                return BadRequest(new { Message = ex.Message });
             }
-            
+
         }
 
 

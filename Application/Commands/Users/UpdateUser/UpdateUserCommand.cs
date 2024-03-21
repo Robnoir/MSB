@@ -14,7 +14,7 @@ namespace Application.Commands.Users.UpdateUser
         public UserDto UpdateUserDto { get; }
         public Guid UserId { get; }
 
-        public string UpdatePassword  { get; set; }
+        public string UpdatePassword { get; set; }
 
         public UpdateUserCommand(UserDto userDto, Guid userId)
         {

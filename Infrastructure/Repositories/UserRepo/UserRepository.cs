@@ -43,9 +43,9 @@ namespace Infrastructure.Repositories.UserRepo
             return await _database.Users.FindAsync(id);
         }
 
-       public async Task<UserModels> GetByEmailAsync(string email)
+        public async Task<UserModels> GetByEmailAsync(string email)
         {
-            if(string.IsNullOrWhiteSpace(email))
+            if (string.IsNullOrWhiteSpace(email))
             {
                 throw new ArgumentException("Email cannot be null or empty", nameof(email));
             }

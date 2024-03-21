@@ -18,7 +18,7 @@ namespace Application.Commands.Users.UpdateUser
 
         public async Task<UserModels> Handle(UpdateUserCommand command, CancellationToken cancellationToken)
         {
-                var user = await _userRepository.GetUserByIdAsync(command.UserId);
+            var user = await _userRepository.GetUserByIdAsync(command.UserId);
             if (user == null)
             {
                 throw new KeyNotFoundException("User not found");
@@ -27,12 +27,12 @@ namespace Application.Commands.Users.UpdateUser
             user.Email = command.UpdateUserDto.Email ?? user.Email;
             user.FirstName = command.UpdateUserDto.FirstName ?? user.FirstName;
             user.LastName = command.UpdateUserDto.LastName ?? user.LastName;
-            
 
-                await _userRepository.UpdateUserAsync(user);
 
-                return user;
-             
+            await _userRepository.UpdateUserAsync(user);
+
+            return user;
+
 
 
         }

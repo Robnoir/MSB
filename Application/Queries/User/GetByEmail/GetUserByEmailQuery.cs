@@ -17,6 +17,6 @@ namespace Application.Queries.User.GetByEmail
             Email = email;
         }
     }
-    
-    
+
+
 }

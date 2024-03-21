@@ -18,6 +18,6 @@ namespace Application.Commands.Users.LogIn
             logInDtos = logInDto;
         }
     }
-    
+
 }
 

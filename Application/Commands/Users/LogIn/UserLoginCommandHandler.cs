@@ -26,7 +26,7 @@ namespace Application.Commands.Users.LogIn
                 throw new KeyNotFoundException($"User with Email '{request.logInDtos.Email}' couldn't be found");
             }
 
-            bool isPasswordValid = BCrypt.Net.BCrypt.Verify(request.logInDtos.Password, user.PasswordHash);;
+            bool isPasswordValid = BCrypt.Net.BCrypt.Verify(request.logInDtos.Password, user.PasswordHash); ;
             if (!isPasswordValid)
             {
                 throw new UnauthorizedAccessException("Invalid credentials.");
@@ -36,7 +36,7 @@ namespace Application.Commands.Users.LogIn
             return user;
 
 
-            
+
 
         }
 

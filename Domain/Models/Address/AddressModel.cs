@@ -14,7 +14,7 @@ namespace Domain.Models.Address
         public Guid AddressId { get; set; }
         [ForeignKey("UserId")]
         public Guid UserId { get; set; }
-        public UserModels User{ get; set; }
+        public UserModels User { get; set; }
         public string StreetName { get; set; } = string.Empty;
         public string StreetNumber { get; set; } = string.Empty;
         public string Apartment { get; set; } = string.Empty;

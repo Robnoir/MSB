@@ -20,11 +20,11 @@ namespace Application.Queries.User.GetByEmail
 
         public Task<UserModels> Handle(GetUserByEmailQuery request, CancellationToken cancellationToken)
         {
-         
+
             if (string.IsNullOrWhiteSpace(request.Email))
             {
                 throw new ArgumentException("Username cannot be null or empty", nameof(request.Email));
-            }   
+            }
 
             var user = _userRepository.GetByEmailAsync(request.Email);
 

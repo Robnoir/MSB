@@ -25,7 +25,7 @@ namespace Infrastructure.Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-           
+
             // Mock data for UserModels
             var users = new UserModels[]
             {
@@ -34,7 +34,7 @@ namespace Infrastructure.Database
             new UserModels { UserId = Guid.NewGuid(), Email = "Cecar@gmail.com", FirstName = "Cecar", LastName = "Citron", PhoneNumber = 0735097384, PasswordHash = "Cecar123" },
             new UserModels { UserId = Guid.NewGuid(), Email = "Erik@gmail.com", FirstName = "Erik", LastName = "Eriksson", PhoneNumber = 0735097384, PasswordHash = "Erik123" },
             };
-            
+
 
             // Mock data for AddressModels
             var addresses = new AddressModel[]
@@ -56,11 +56,11 @@ namespace Infrastructure.Database
             }
             modelBuilder.Entity<AddressModel>().HasData(addresses);
 
-                modelBuilder.Entity<UserModels>()
-              .HasMany(u => u.Addresses)
-              .WithOne(a => a.User)
-              .HasForeignKey(a => a.UserId)
-              .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<UserModels>()
+          .HasMany(u => u.Addresses)
+          .WithOne(a => a.User)
+          .HasForeignKey(a => a.UserId)
+          .OnDelete(DeleteBehavior.Cascade);
 
             // Mock data for OrderModels
             var orders = new OrderModel[]
@@ -120,7 +120,7 @@ namespace Infrastructure.Database
                     Size = "S"
                 }
             };
-          
+
 
             modelBuilder.Entity<BoxModel>().HasData(boxes);
 
@@ -144,14 +144,14 @@ namespace Infrastructure.Database
             };
             modelBuilder.Entity<ShelfModel>().HasData(shelves);
 
-            
-            
-      
+
+
+
 
 
 
             base.OnModelCreating(modelBuilder);
         }
-         
+
     }
 }
