@@ -45,8 +45,6 @@ namespace Infrastructure.Database
                   new AddressModel { AddressId = Guid.NewGuid(), StreetName = "Pine Street", StreetNumber ="24", Apartment = "Apt 10D", ZipCode = "67890", Floor = "4th", City = "Cedarville", State = "Texas", Country = "USA", Latitude = "31.9686", Longitude = "-99.9018" }
             };
 
-            // Update ShelfModels with WarehouseId (due to circular dependency)
-
             //for (int i = 0; i < users.Length; i++)
             //{
             //    users[i].Addresses = addresses[i].AddressId;
@@ -61,7 +59,8 @@ namespace Infrastructure.Database
                 modelBuilder.Entity<UserModels>()
               .HasMany(u => u.Addresses)
               .WithOne(a => a.User)
-              .HasForeignKey(a => a.UserId);
+              .HasForeignKey(a => a.UserId)
+              .OnDelete(DeleteBehavior.Cascade);
 
             // Mock data for OrderModels
             var orders = new OrderModel[]
