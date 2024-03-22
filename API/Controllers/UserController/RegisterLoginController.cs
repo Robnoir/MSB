@@ -3,7 +3,6 @@ using Application.Dto.LogIn;
 using Application.Dto.Register;
 using Infrastructure.Repositories.UserRepo;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers.UserController

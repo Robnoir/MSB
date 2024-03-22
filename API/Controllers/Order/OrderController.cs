@@ -21,6 +21,7 @@ namespace API.Controllers.Order
         }
 
         [HttpPost]
+        [Route("Add Order")]
         public async Task<ActionResult<OrderDto>> AddOrder(AddOrderCommand command)
         {
             var order = await _mediator.Send(command);
@@ -37,6 +38,7 @@ namespace API.Controllers.Order
         }
 
         [HttpGet]
+        [Route("Get All Orders")]
         public async Task<ActionResult<IEnumerable<OrderDto>>> GetAllOrders()
         {
             var query = new GetAllOrdersQuery();
@@ -53,7 +55,7 @@ namespace API.Controllers.Order
             return Ok(orderDtos);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("Get Order By {id}")]
         public async Task<ActionResult<OrderDto>> GetOrderById(Guid id)
         {
             var query = new GetOrderByIdQuery(id);
@@ -76,7 +78,7 @@ namespace API.Controllers.Order
             return Ok(orderDto);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("Update Order By {id}")]
         public async Task<IActionResult> UpdateOrder(Guid id, OrderDto orderDto)
         {
             if (id != orderDto.OrderId)
@@ -90,7 +92,7 @@ namespace API.Controllers.Order
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete Order By {id}")]
         public async Task<IActionResult> DeleteOrder(Guid id)
         {
             var command = new DeleteOrderCommand(id);
