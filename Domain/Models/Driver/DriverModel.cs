@@ -6,7 +6,7 @@ using Domain.Models.Employee;
 namespace Domain.Models.Driver
 {
     public class DriverModel
-	{
+    {
         [Key]
         public Guid DriverId { get; set; }
         public Guid EmployeeId { get; set; }

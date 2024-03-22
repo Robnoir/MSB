@@ -6,9 +6,9 @@ namespace Application.Dto.Driver
 {
     public class DriverDto
     {
-       [Required] public Guid DriverId { get; set; }
-       [Required] public Guid EmployeeId { get; set; }
-       //[Required] public Guid CarId { get; set; }
+        [Required] public Guid DriverId { get; set; }
+        [Required] public Guid EmployeeId { get; set; }
+        //[Required] public Guid CarId { get; set; }
     }
 
     public class DriverDetailDto : DriverDto

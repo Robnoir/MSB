@@ -5,7 +5,7 @@ namespace Application.Commands.Driver.AddDriver
     {
         public Guid DriverId { get; set; }
         public Guid EmployeeId { get; set; }
-        
+
     }
 }
 

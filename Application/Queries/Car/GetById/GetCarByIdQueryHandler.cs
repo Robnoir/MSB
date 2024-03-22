@@ -6,8 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Application.Queries.Car.GetById
 {
-	public class GetCarByIdQueryHandler
-	{
+    public class GetCarByIdQueryHandler
+    {
         private readonly MSB_Database _database;
         private readonly ICarRepository _carRepository;
 

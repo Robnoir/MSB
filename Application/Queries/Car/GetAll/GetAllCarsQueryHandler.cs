@@ -8,7 +8,7 @@ namespace Application.Queries.Car
 {
     public class GetAllCarsQueryHandler
     {
-        
+
         private readonly MSB_Database _database;
 
         public GetAllCarsQueryHandler(MSB_Database database)

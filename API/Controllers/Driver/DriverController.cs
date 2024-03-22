@@ -32,7 +32,7 @@ namespace API.Controllers.Driver
         {
             _getAllDriversQueryHandler = getAllDriversQueryHandler;
         }
-        
+
         // GET: api/Drivers
         [HttpGet]
         public ActionResult<IEnumerable<DriverDetailDto>> GetDrivers()
@@ -120,7 +120,7 @@ namespace API.Controllers.Driver
                 // CarId = driver.CarId
             });
         }
-       
+
     }
 
 }

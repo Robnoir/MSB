@@ -40,7 +40,7 @@ namespace Application.Queries.Driver.GetById
                     LastName = driver.Employee.LastName,
                     Role = driver.Employee.Role
                 },
-                
+
             };
         }
     }

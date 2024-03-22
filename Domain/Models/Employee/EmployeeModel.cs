@@ -5,8 +5,8 @@ using Domain.Models.Driver;
 
 namespace Domain.Models.Employee
 {
-	public class EmployeeModel
-	{
+    public class EmployeeModel
+    {
         [Key]
         public Guid EmployeeId { get; set; }
         public string FirstName { get; set; } = string.Empty;

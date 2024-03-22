@@ -47,7 +47,7 @@ namespace API.Controllers.Car
         public async Task<IActionResult> GetCarById(Guid carId)
         {
             var query = new GetCarByIdQuery(carId);
-            var car = await _getCarByIdQueryHandler.Handle(query); 
+            var car = await _getCarByIdQueryHandler.Handle(query);
             if (car == null)
             {
                 return NotFound();
@@ -150,7 +150,7 @@ namespace API.Controllers.Car
                 Volume = carDto.Volume,
                 Type = carDto.Type,
                 Availability = carDto.Availability,
-                
+
             };
         }
 
@@ -160,7 +160,7 @@ namespace API.Controllers.Car
             {
                 DriverId = driverDto.DriverId,
                 EmployeeId = driverDto.EmployeeId,
-                
+
             };
         }
     }

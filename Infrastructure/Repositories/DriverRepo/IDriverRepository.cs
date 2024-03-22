@@ -3,8 +3,8 @@ using Domain.Models.Driver;
 
 namespace Infrastructure.Repositories.DriverRepo
 {
-	public interface IDriverRepository
-	{
+    public interface IDriverRepository
+    {
         IEnumerable<DriverModel> GetAllDrivers();
         DriverModel GetDriverById(Guid id);
         void AddDriver(DriverModel driver);

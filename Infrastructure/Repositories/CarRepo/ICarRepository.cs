@@ -3,8 +3,8 @@ using Domain.Models.Car;
 
 namespace Infrastructure.Repositories.CarRepo
 {
-	public interface ICarRepository
-	{
+    public interface ICarRepository
+    {
         Task<IEnumerable<CarModel>> GetAllCars();
         Task<CarModel> GetCarById(Guid carId);
         Task UpdateCar(CarModel car);

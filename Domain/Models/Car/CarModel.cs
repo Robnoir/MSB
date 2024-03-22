@@ -5,9 +5,9 @@ using Domain.Models.Driver;
 
 namespace Domain.Models.Car
 {
-	public class CarModel
-	{
-        [Key] 
+    public class CarModel
+    {
+        [Key]
         public Guid CarID { get; set; }
         public double Volume { get; set; }
         public string Type { get; set; }
