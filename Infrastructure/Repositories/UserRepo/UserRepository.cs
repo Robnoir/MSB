@@ -1,5 +1,6 @@
 ﻿using Domain.Models.User;
 using Infrastructure.Database;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +21,41 @@ namespace Infrastructure.Repositories.UserRepo
 
         public async Task<UserModel> AddUserAsync(UserModel user)
         {
-            _database.Users.AddAsync(user);
-            _database.SaveChangesAsync();
+            await _database.Users.AddAsync(user);
+            await _database.SaveChangesAsync();
 
             return await Task.FromResult(user);
 
+        }
+
+        public Task DeleteUserAsync(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<List<UserModel>> GetAllUsersAsync()
+        {
+            return await _database.Users.ToListAsync();
+        }
+
+        public async Task<UserModel> GetUserByIdAsync(Guid id)
+        {
+            return await _database.Users.FindAsync(id);
+        }
+
+        public async Task<UserModel> GetByEmailAsync(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                throw new ArgumentException("Email cannot be null or empty", nameof(email));
+            }
+            return await _database.Users.FirstOrDefaultAsync(x => x.Email.ToLower() == email.ToLower());
+        }
+
+        public async Task UpdateUserAsync(UserModel user)
+        {
+            _database.Users.Update(user);
+            await _database.SaveChangesAsync();
         }
     }
 }

@@ -19,9 +19,6 @@
     <Folder Include="Commands\Order\UpdateOrder\" />
     <Folder Include="Commands\Users\DeleteUser\" />
     <Folder Include="Commands\Users\UpdateUser\" />
-    <Folder Include="Commands\WareHouse\AddWarehouse\" />
-    <Folder Include="Commands\WareHouse\DeleteWarehouse\" />
-    <Folder Include="Commands\WareHouse\UpdateWarehouse\" />
     <Folder Include="Dto\Employee\" />
     <Folder Include="Dto\Item\" />
     <Folder Include="Dto\Driver\" />
@@ -31,10 +28,12 @@
     <Folder Include="Dto\Repair\" />
     <Folder Include="Dto\Transaction\" />
     <Folder Include="Dto\User\" />
-    <Folder Include="Queries\Order\GetAll\" />
-    <Folder Include="Queries\Order\GetByID\" />
     <Folder Include="Queries\User\GetAll\" />
     <Folder Include="Queries\User\GetById\" />
+    <Folder Include="Validators\ShelfValidator\" />
+    <Folder Include="Validators\WarehouseValidator\" />
+    <Folder Include="Queries\Order\GetAll\" />
+    <Folder Include="Queries\Order\GetByID\" />
     <Folder Include="Queries\Warehouse\GetAll\" />
     <Folder Include="Queries\Warehouse\GetByID\" />
     <Folder Include="Validators\" />
@@ -62,6 +61,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3">
       <PrivateAssets>all</PrivateAssets>
@@ -71,6 +71,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="MySql.Data" Version="8.3.0" />
     <PackageReference Include="System.Diagnostics.Tools" Version="4.3.0" />
   </ItemGroup>
 

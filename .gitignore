@@ -6,6 +6,9 @@
 [Tt]est[Rr]esult*/
 [Aa]rtifacts/
 packages/
+**/migrations/
+/API/appsettings.json
+
 
 # Files #
 *.suo

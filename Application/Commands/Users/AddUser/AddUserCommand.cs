@@ -7,17 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Application.Dto.User;
 using Domain.Models.User;
+using Application.Dto.Register;
+using Domain.Models.User;
 
-namespace Application.Commands.Users.AddUser
+public class AddUserCommand : IRequest<UserModel>
 {
-    public class AddUserCommand : IRequest<UserModel>
+    public RegisterDto RegisterData { get; }
+
+    public AddUserCommand(RegisterDto registerData)
     {
-
-        public AddUserCommand(UserDto newUser)
-        {
-            NewUser = newUser;
-        }
-        public UserDto NewUser { get; }
-
+        RegisterData = registerData;
     }
 }
