@@ -1,4 +1,5 @@
 ﻿using Application.Dto.Employee;
+using Application.Queries.Employee.GetAll;
 using Domain.Models.Employee;
 using Domain.Models.User;
 using Infrastructure.Repositories.EmployeeRepo;
@@ -19,6 +20,7 @@ namespace API.Controllers.Employee
         {
             _employeeRepository = employeeRepository;
         }
+
 
         // GET: api/Employee
         [HttpGet]

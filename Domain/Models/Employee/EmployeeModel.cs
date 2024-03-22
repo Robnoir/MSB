@@ -1,7 +1,7 @@
 ﻿using System;
 using Domain.Models.Address;
 using System.ComponentModel.DataAnnotations;
-
+using Domain.Models.Driver;
 
 namespace Domain.Models.Employee
 {
@@ -17,7 +17,7 @@ namespace Domain.Models.Employee
 
         //public ICollection<WareHouseModel> WareHouses { get; set; }
         //public ICollection<AddressModel> Addresses { get; set; }
-        //public ICollection<DriverModel> Drivers { get; set; }
+        public ICollection<DriverModel> Drivers { get; set; }
     }
 }
 

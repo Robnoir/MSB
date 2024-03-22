@@ -15,10 +15,9 @@ namespace Application.Queries.Employee.GetAll
             _database = database;
         }
 
-        public async Task<List<EmployeeModel>> Handle(GetAllEmployeesQuery request, CancellationToken cancellationToken)
+        public async Task<List<EmployeeModel>> Handle(GetAllEmployeesQuery query, CancellationToken cancellationToken)
         {
-            var employees = await _database.Employees.ToListAsync();
-            return employees;
+            return await _database.Employees.ToListAsync();
         }
     }
 }

@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Models.Driver;
 
 namespace Application.Dto.Employee
 {
@@ -14,7 +15,7 @@ namespace Application.Dto.Employee
 
         //public ICollection<WareHouseModel> WareHouses { get; set; }
         //public ICollection<AddressModel> Addresses { get; set; }
-        //public ICollection<DriverModel> Drivers { get; set; }
+        public ICollection<DriverModel> Drivers { get; set; }
 
     }
 }
