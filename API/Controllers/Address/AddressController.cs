@@ -22,6 +22,7 @@ namespace API.Controllers.Address
         }
 
         [HttpPost]
+        [Route("Add Address")]
         public async Task<ActionResult<AddressModel>> AddAddress(AddAddressCommand command)
         {
             var address = await _mediator.Send(command);
@@ -29,6 +30,7 @@ namespace API.Controllers.Address
         }
 
         [HttpGet]
+        [Route("Get All Addresses")]
         public async Task<ActionResult<IEnumerable<AddressModel>>> GetAllAddresses()
         {
             var query = new GetAllAddressesQuery();
@@ -36,7 +38,7 @@ namespace API.Controllers.Address
             return Ok(addresses);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("Get Address By {id}")]
         public async Task<ActionResult<AddressModel>> GetAddressById(Guid id)
         {
             var query = new GetAddressByIdQuery(id);
@@ -50,7 +52,7 @@ namespace API.Controllers.Address
             return Ok(address);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("Update Address By {id}")]
         public async Task<IActionResult> UpdateAddress(Guid id, AddressModel address)
         {
             if (id != address.AddressId)
@@ -64,7 +66,7 @@ namespace API.Controllers.Address
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete Address By {id}")]
         public async Task<IActionResult> DeleteAddress(Guid id)
         {
             var command = new DeleteAddressCommand(id);

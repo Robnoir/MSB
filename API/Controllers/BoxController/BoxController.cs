@@ -21,6 +21,7 @@ namespace API.Controllers.BoxController
         }
 
         [HttpPost]
+        [Route("Add Box")]
         public async Task<ActionResult<BoxDto>> AddBox(AddBoxCommand command)
         {
             var box = await _mediator.Send(command);
@@ -40,6 +41,7 @@ namespace API.Controllers.BoxController
         }
 
         [HttpGet]
+        [Route("Get All Boxes")]
         public async Task<ActionResult<IEnumerable<BoxDto>>> GetAllBoxes()
         {
             var query = new GetAllBoxesQuery();
@@ -58,7 +60,7 @@ namespace API.Controllers.BoxController
             return Ok(boxDtos);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("Get Box By {id}")]
         public async Task<ActionResult<BoxDto>> GetBoxById(Guid id)
         {
             var query = new GetBoxByIdQuery(id);
@@ -83,7 +85,7 @@ namespace API.Controllers.BoxController
 
             return Ok(boxDto);
         }
-        [HttpPut("{id}")]
+        [HttpPut("Update Box By {id}")]
         public async Task<IActionResult> UpdateBox(Guid id, BoxDto boxDto)
         {
             if (id != boxDto.BoxId)
@@ -97,7 +99,7 @@ namespace API.Controllers.BoxController
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete Box By {id}")]
         public async Task<IActionResult> DeleteBox(Guid id)
         {
             var command = new DeleteBoxCommand(id);
