@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Application.Dto.Car;
+﻿using Application.Dto.Driver;
 using Application.Dto.Employee;
-using Application.Dto.Driver;
+using Application.Queries.Driver.GetAll;
 using Domain.Models.Driver;
-using Infrastructure.Database;
 using Infrastructure.Repositories.DriverRepo;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Application.Queries.Driver.GetAll;
-using Application.Queries.Driver.GetById;
-using Application.Commands.Driver.AddDriver;
 
 namespace API.Controllers.Driver
 {
@@ -120,8 +111,5 @@ namespace API.Controllers.Driver
                 // CarId = driver.CarId
             });
         }
-
     }
-
 }
-

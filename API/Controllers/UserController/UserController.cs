@@ -1,6 +1,6 @@
-using Application.Dto.User;
 using Application.Commands.Users.DeleteUser;
 using Application.Commands.Users.UpdateUser;
+using Application.Dto.User;
 using Application.Queries.User.GetAll;
 using Application.Queries.User.GetById;
 using Infrastructure.Repositories.UserRepo;
@@ -9,12 +9,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers.UserController
 {
-
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
-
         private readonly IMediator _mediator;
         private readonly IConfiguration _configuration;
         private readonly IUserRepository _userRepository;
@@ -33,8 +31,6 @@ namespace API.Controllers.UserController
         {
             return Ok(await _mediator.Send(new GetAllUsersQuery()));
         }
-
-
 
         //------------------------------------------------------------------------------------
 
@@ -67,8 +63,6 @@ namespace API.Controllers.UserController
                 }
 
                 return Ok(result);
-
-
             }
             catch (KeyNotFoundException ex)
             {
@@ -91,16 +85,8 @@ namespace API.Controllers.UserController
             {
                 return NoContent();
             }
-
             return NotFound();
-
         }
-
         //------------------------------------------------------------------------------------
-
-
-
-
-
     }
 }

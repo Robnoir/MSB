@@ -1,5 +1,4 @@
-﻿using System;
-using Application.Dto.Employee;
+﻿using Application.Dto.Employee;
 using Domain.Models.Employee;
 using MediatR;
 
@@ -12,7 +11,5 @@ namespace Application.Commands.Employee.AddEmployee
             NewEmployee = newEmployee;
         }
         public EmployeeDto NewEmployee { get; }
-
     }
 }
-

@@ -1,10 +1,5 @@
 ﻿using Domain.Models.User;
 using Infrastructure.Repositories.UserRepo;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application.Commands.Users.UpdateUser
 {
@@ -15,7 +10,6 @@ namespace Application.Commands.Users.UpdateUser
         {
             _userRepository = userRepository;
         }
-
         public async Task<UserModel> Handle(UpdateUserCommand command, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetUserByIdAsync(command.UserId);
@@ -32,12 +26,6 @@ namespace Application.Commands.Users.UpdateUser
             await _userRepository.UpdateUserAsync(user);
 
             return user;
-
-
-
         }
-
-
-
     }
 }

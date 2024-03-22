@@ -39,7 +39,6 @@ namespace API.Controllers.UserController
             }
         }
 
-
         //------------------------------------------------------------------------------------
 
         [HttpPost]
@@ -73,12 +72,6 @@ namespace API.Controllers.UserController
             {
                 return BadRequest(new { Message = ex.Message });
             }
-
         }
-
-
-
-
-
     }
 }

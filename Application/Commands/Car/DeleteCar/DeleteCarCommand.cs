@@ -1,14 +1,11 @@
-﻿using System;
-namespace Application.Commands.Car.DeleteCar
+﻿namespace Application.Commands.Car.DeleteCar
 {
     public class DeleteCarCommand
     {
         public Guid CarId { get; }
-
         public DeleteCarCommand(Guid carId)
         {
             CarId = carId;
         }
     }
 }
-

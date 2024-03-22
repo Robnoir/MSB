@@ -1,6 +1,4 @@
-﻿using System;
-using Application.Dto.Employee;
-using Application.Dto.User;
+﻿using Application.Dto.Employee;
 using Domain.Models.Employee;
 using MediatR;
 
@@ -10,9 +8,7 @@ namespace Application.Commands.Employee.UpdateEmployee
     {
         public EmployeeDto UpdateEmployeeDto { get; }
         public Guid EmployeeId { get; }
-
         public string UpdatePassword { get; set; }
-
         public UpdateEmployeeCommand(EmployeeDto employeeDto, Guid employeeId)
         {
             UpdateEmployeeDto = employeeDto;
@@ -20,4 +16,3 @@ namespace Application.Commands.Employee.UpdateEmployee
         }
     }
 }
-

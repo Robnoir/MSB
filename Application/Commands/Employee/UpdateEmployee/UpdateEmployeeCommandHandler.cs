@@ -1,7 +1,5 @@
-﻿using System;
-using Domain.Models.Employee;
+﻿using Domain.Models.Employee;
 using Infrastructure.Repositories.EmployeeRepo;
-using Infrastructure.Repositories.UserRepo;
 
 namespace Application.Commands.Employee.UpdateEmployee
 {
@@ -12,7 +10,6 @@ namespace Application.Commands.Employee.UpdateEmployee
         {
             _employeeRepository = employeeRepository;
         }
-
         public async Task<EmployeeModel> Handle(UpdateEmployeeCommand command, CancellationToken cancellationToken)
         {
             var employee = await _employeeRepository.GetEmployeeByIdAsync(command.EmployeeId);
@@ -24,11 +21,8 @@ namespace Application.Commands.Employee.UpdateEmployee
             employee.Email = command.UpdateEmployeeDto.Email ?? employee.Email;
             employee.FirstName = command.UpdateEmployeeDto.FirstName ?? employee.FirstName;
             employee.LastName = command.UpdateEmployeeDto.LastName ?? employee.LastName;
-
-
             await _employeeRepository.UpdateEmployeeAsync(command.EmployeeId, employee);
             return employee;
         }
     }
 }
-
