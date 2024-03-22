@@ -14,6 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Commands\Order\AddOrder\" />
+    <Folder Include="Commands\Order\DeleteOrder\" />
+    <Folder Include="Commands\Order\UpdateOrder\" />
+    <Folder Include="Commands\WareHouse\AddWarehouse\" />
+    <Folder Include="Commands\WareHouse\DeleteWarehouse\" />
+    <Folder Include="Commands\WareHouse\UpdateWarehouse\" />
     <Folder Include="Commands\Users\DeleteUser\" />
     <Folder Include="Commands\Users\UpdateUser\" />
     <Folder Include="Dto\Employee\" />
@@ -29,9 +35,15 @@
     <Folder Include="Queries\User\GetById\" />
     <Folder Include="Validators\ShelfValidator\" />
     <Folder Include="Validators\WarehouseValidator\" />
+    <Folder Include="Queries\Order\GetAll\" />
+    <Folder Include="Queries\Order\GetByID\" />
+    <Folder Include="Queries\Warehouse\GetAll\" />
+    <Folder Include="Queries\Warehouse\GetByID\" />
+    <Folder Include="Validators\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3">
       <PrivateAssets>all</PrivateAssets>

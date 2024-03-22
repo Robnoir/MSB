@@ -11,6 +11,7 @@ namespace Application.Commands.Address.AddAddress
             {
                 AddressId = Guid.NewGuid(),
                 StreetName = request.NewAddress.StreetName ?? string.Empty,
+                StreetNumber = request.NewAddress.StreetNumber ?? string.Empty,
                 Apartment = request.NewAddress.Apartment,
                 ZipCode = request.NewAddress.ZipCode ?? string.Empty,
                 Floor = request.NewAddress.Floor,

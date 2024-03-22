@@ -1,10 +1,15 @@
-﻿using Application.Dto.User;
+﻿using Application.Commands.Users.DeleteUser;
+using Application.Commands.Users.UpdateUser;
+using Application.Dto.User;
+using Application.Queries.User.GetAll;
+using Application.Queries.User.GetById;
 using Domain.Models.UserModel;
 using Infrastructure.Repositories.UserRepo;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata.Ecma335;
 
 namespace API.Controllers.UserController
 {
@@ -24,24 +29,80 @@ namespace API.Controllers.UserController
             _mediator = mediator;
             _userRepository = userRepository;
         }
+        //------------------------------------------------------------------------------------
 
-        [HttpPost("register")]
-        public async Task<ActionResult<UserModel>> RegisterAsync([FromBody] UserDto request)
+        [HttpGet]
+        [Route("Get all users")]
+        public async Task<IActionResult> GetAllUsers()
         {
-
-
-            UserModel newUser = new UserModel()
-            {
-                Id = Guid.NewGuid(),
-                FirstName = request.FirstName,
-                LastName = request.LastName,
-                Email = request.Email,
-                Password = request.Password,
-            };
-
-            await _userRepository.AddUserAsync(newUser);
-            return newUser;
+            return Ok(await _mediator.Send(new GetAllUsersQuery()));
         }
+
+
+
+        //------------------------------------------------------------------------------------
+
+        [HttpGet]
+        [Route("GetUser by Id")]
+        public async Task<IActionResult> GetUserById(Guid UserId)
+        {
+            try
+            {
+                return Ok(await _mediator.Send(new GetUserByIdQuery(UserId)));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+        //------------------------------------------------------------------------------------
+        [HttpPut]
+        [Route("(Update User")]
+        public async Task<IActionResult> UpdateUser([FromBody] UserDto updatedUserDto, Guid updatedUserId)
+        {
+            try
+            {
+                var command = new UpdateUserCommand(updatedUserDto, updatedUserId);
+                var result = await _mediator.Send(command);
+
+                if (result == null)
+                {
+                    return NotFound("User not found");
+                }
+
+                return Ok(result);
+
+
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, $"An Error occurred:{ex.Message}");
+            }
+        }
+
+        //------------------------------------------------------------------------------------
+
+        [HttpDelete("Delete User by {id}")]
+        public async Task<IActionResult> DeleteUserById(Guid id)
+        {
+            var user = await _mediator.Send(new DeleteUserCommand(id));
+
+            if (user == null)
+            {
+                return NoContent();
+            }
+
+            return NotFound();
+
+        }
+
+        //------------------------------------------------------------------------------------
+
+
 
 
 

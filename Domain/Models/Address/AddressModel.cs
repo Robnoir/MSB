@@ -1,13 +1,22 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Domain.Models.UserModel;
 
 namespace Domain.Models.Address
 {
     public class AddressModel
     {
+
         [Key]
         public Guid AddressId { get; set; }
+        [ForeignKey("UserId")]
+        public Guid UserId { get; set; }
+        public UserModels User { get; set; }
         public string StreetName { get; set; } = string.Empty;
+        public string StreetNumber { get; set; } = string.Empty;
         public string Apartment { get; set; } = string.Empty;
         public string ZipCode { get; set; } = string.Empty;
         public string Floor { get; set; } = string.Empty;

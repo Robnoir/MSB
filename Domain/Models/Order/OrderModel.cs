@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Domain.Models.UserModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Models.OrderModel
@@ -14,7 +15,7 @@ namespace Domain.Models.OrderModel
         public string OrderStatus { get; set; } = string.Empty;
         [ForeignKey("UserId")] // Inconsistency in naming/UserId is named Id in UserModel
         public Guid UserId { get; set; }
-        public UserModel.UserModel User { get; set; }
+        public UserModels User { get; set; }
 
         // [ForeignKey("CarId")]
         // public int CarId { get; set; }

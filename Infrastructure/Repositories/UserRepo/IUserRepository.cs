@@ -9,6 +9,16 @@ namespace Infrastructure.Repositories.UserRepo
 {
     public interface IUserRepository
     {
-        Task<UserModel> AddUserAsync(UserModel user);
+        Task<UserModels> AddUserAsync(UserModels user);
+        Task UpdateUserAsync(UserModels user);
+        Task DeleteUserAsync(Guid id);
+        Task<UserModels> GetUserByIdAsync(Guid id);
+
+        Task<List<UserModels>> GetAllUsersAsync();
+
+        Task<UserModels> GetByEmailAsync(string email);
+
+
+
     }
 }
