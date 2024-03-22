@@ -7,7 +7,7 @@
 [Aa]rtifacts/
 packages/
 **/migrations/
-appsettings.json
+/API/appsettings.json
 
 
 # Files #
