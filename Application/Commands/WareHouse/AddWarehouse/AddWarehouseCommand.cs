@@ -13,3 +13,4 @@ namespace Application.Commands.Warehouse.AddWarehouse
         public WarehouseDto NewWarehouse { get; }
     }
 }
+

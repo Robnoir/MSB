@@ -1,4 +1,4 @@
-﻿using Domain.Models.UserModel;
+﻿using Domain.Models.User;
 using Infrastructure.Repositories.UserRepo;
 using MediatR;
 using System;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.Queries.User.GetAll
 {
-    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, List<UserModels>>
+    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, List<UserModel>>
     {
         private readonly IUserRepository _userRepository;
 
@@ -19,9 +19,9 @@ namespace Application.Queries.User.GetAll
 
         }
 
-        public async Task<List<UserModels>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
+        public async Task<List<UserModel>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
         {
-            List<UserModels> allUsersFromDatabase = await _userRepository.GetAllUsersAsync();
+            List<UserModel> allUsersFromDatabase = await _userRepository.GetAllUsersAsync();
             if (allUsersFromDatabase == null)
             {
                 throw new InvalidOperationException("No Users was found");

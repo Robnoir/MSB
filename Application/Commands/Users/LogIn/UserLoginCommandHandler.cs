@@ -1,11 +1,11 @@
-﻿using Domain.Models.UserModel;
+﻿using Domain.Models.User;
 using Infrastructure.Repositories.UserRepo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using BCrypt.Net;
 namespace Application.Commands.Users.LogIn
 {
     public class UserLoginCommandHandler
@@ -18,7 +18,7 @@ namespace Application.Commands.Users.LogIn
             _userRepository = userRepository;
         }
 
-        public async Task<UserModels> Handle(UserLoginCommand request, CancellationToken cancellationToken)
+        public async Task<UserModel> Handle(UserLoginCommand request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetByEmailAsync(request.logInDtos.Email);
             if (user == null)

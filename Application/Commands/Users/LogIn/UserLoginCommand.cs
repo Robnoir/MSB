@@ -1,5 +1,5 @@
 ﻿using Application.Dto.LogIn;
-using Domain.Models.UserModel;
+using Domain.Models.User;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Users.LogIn
 {
-    public class UserLoginCommand : IRequest<UserModels>
+    public class UserLoginCommand : IRequest<UserModel>
     {
         public LogInDto logInDtos { get; set; }
 

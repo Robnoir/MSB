@@ -1,5 +1,5 @@
 ﻿using Application.Dto.User;
-using Domain.Models.UserModel;
+using Domain.Models.User;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Users.UpdateUser
 {
-    public class UpdateUserCommand : IRequest<UserModels>
+    public class UpdateUserCommand : IRequest<UserModel>
     {
         public UserDto UpdateUserDto { get; }
         public Guid UserId { get; }

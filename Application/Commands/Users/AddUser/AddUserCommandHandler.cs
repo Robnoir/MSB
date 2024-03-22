@@ -1,12 +1,14 @@
-﻿using MediatR;
-using Domain.Models.UserModel;
+
+using Application.Commands.Users;
+using Domain.Models.User;
+using MediatR;
 using Domain.Models.Address;
 using Infrastructure.Repositories.UserRepo;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Dto.Register;
 
-public class AddUserCommandHandler : IRequestHandler<AddUserCommand, UserModels>
+public class AddUserCommandHandler : IRequestHandler<AddUserCommand, UserModel>
 {
     private readonly IUserRepository _userRepository;
 
@@ -15,9 +17,9 @@ public class AddUserCommandHandler : IRequestHandler<AddUserCommand, UserModels>
         _userRepository = userRepository;
     }
 
-    public async Task<UserModels> Handle(AddUserCommand request, CancellationToken cancellationToken)
+    public async Task<UserModel> Handle(AddUserCommand request, CancellationToken cancellationToken)
     {
-        var newUser = new UserModels
+        var newUser = new UserModel
         {
             Email = request.RegisterData.Email,
             FirstName = request.RegisterData.FirstName,
