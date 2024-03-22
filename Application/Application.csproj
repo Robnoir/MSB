@@ -52,6 +52,13 @@
     <Folder Include="Queries\Driver\" />
     <Folder Include="Queries\Driver\GetAll\" />
     <Folder Include="Queries\Driver\GetById\" />
+    <Folder Include="Queries\Car\" />
+    <Folder Include="Queries\Car\GetAll\" />
+    <Folder Include="Queries\Car\GetById\" />
+    <Folder Include="Commands\Car\" />
+    <Folder Include="Commands\Car\AddCar\" />
+    <Folder Include="Commands\Car\DeleteCar\" />
+    <Folder Include="Commands\Car\UpdateCar\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -87,5 +94,12 @@
     <None Remove="Queries\Driver\" />
     <None Remove="Queries\Driver\GetAll\" />
     <None Remove="Queries\Driver\GetById\" />
+    <None Remove="Queries\Car\" />
+    <None Remove="Queries\Car\GetAll\" />
+    <None Remove="Queries\Car\GetById\" />
+    <None Remove="Commands\Car\" />
+    <None Remove="Commands\Car\AddCar\" />
+    <None Remove="Commands\Car\DeleteCar\" />
+    <None Remove="Commands\Car\UpdateCar\" />
   </ItemGroup>
 </Project>

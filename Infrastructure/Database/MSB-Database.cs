@@ -1,4 +1,5 @@
 ﻿using Domain.Models.Address;
+using Domain.Models.Car;
 using Domain.Models.Driver;
 using Domain.Models.Employee;
 using Domain.Models.User;
@@ -25,6 +26,7 @@ namespace Infrastructure.Database
         public virtual DbSet<EmployeeModel> Employees { get; set; }
         public virtual DbSet<AddressModel> Addresses { get; set; }
         public virtual DbSet<DriverModel> Drivers { get; set; }
+        public virtual DbSet<CarModel> Cars { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
