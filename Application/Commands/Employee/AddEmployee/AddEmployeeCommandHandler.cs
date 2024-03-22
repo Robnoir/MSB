@@ -1,13 +1,5 @@
-﻿using System;
-using System.Web.Helpers;
-using Domain.Models.Employee;
+﻿using Domain.Models.Employee;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 
 namespace Application.Commands.Employee.AddEmployee
 {
@@ -26,9 +18,6 @@ namespace Application.Commands.Employee.AddEmployee
                     Role = request.NewEmployee.Role,
                     Password = request.NewEmployee.Password,
                 };
-
-
-
                 return employeeToCreate;
             }
             catch (Exception ex)
@@ -38,6 +27,4 @@ namespace Application.Commands.Employee.AddEmployee
             }
         }
     }
-
 }
-

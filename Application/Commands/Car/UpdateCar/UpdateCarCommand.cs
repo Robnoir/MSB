@@ -1,5 +1,4 @@
-﻿using System;
-using Application.Dto.Car;
+﻿using Application.Dto.Car;
 
 namespace Application.Commands.Car.UpdateCar
 {
@@ -7,7 +6,6 @@ namespace Application.Commands.Car.UpdateCar
     {
         public Guid CarId { get; }
         public CarDto UpdatedCar { get; }
-
         public UpdateCarCommand(Guid carId, CarDto updatedCar)
         {
             CarId = carId;
@@ -15,4 +13,3 @@ namespace Application.Commands.Car.UpdateCar
         }
     }
 }
-

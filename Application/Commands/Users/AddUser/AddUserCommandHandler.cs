@@ -1,12 +1,7 @@
-
-using Application.Commands.Users;
-using Domain.Models.User;
-using MediatR;
 using Domain.Models.Address;
+using Domain.Models.User;
 using Infrastructure.Repositories.UserRepo;
-using System.Threading;
-using System.Threading.Tasks;
-using Application.Dto.Register;
+using MediatR;
 
 public class AddUserCommandHandler : IRequestHandler<AddUserCommand, UserModel>
 {
@@ -29,7 +24,6 @@ public class AddUserCommandHandler : IRequestHandler<AddUserCommand, UserModel>
             Addresses = new List<AddressModel>()
         };
 
-
         if (request.RegisterData.Address != null)
         {
             newUser.Addresses.Add(new AddressModel
@@ -45,8 +39,6 @@ public class AddUserCommandHandler : IRequestHandler<AddUserCommand, UserModel>
 
             });
         }
-
-
         var savedUser = await _userRepository.AddUserAsync(newUser);
 
         return savedUser;

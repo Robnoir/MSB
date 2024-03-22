@@ -1,5 +1,4 @@
-﻿using System;
-using Domain.Models.Driver;
+﻿using Domain.Models.Driver;
 
 namespace Application.Commands.Driver.UpdateDriver
 {
@@ -9,4 +8,3 @@ namespace Application.Commands.Driver.UpdateDriver
         public DriverModel UpdatedDriver { get; set; }
     }
 }
-

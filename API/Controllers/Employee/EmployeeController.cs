@@ -1,11 +1,5 @@
-﻿using Application.Dto.Employee;
-using Application.Queries.Employee.GetAll;
-using Domain.Models.Employee;
-using Domain.Models.User;
+﻿using Domain.Models.Employee;
 using Infrastructure.Repositories.EmployeeRepo;
-using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers.Employee
@@ -21,9 +15,9 @@ namespace API.Controllers.Employee
             _employeeRepository = employeeRepository;
         }
 
-
         // GET: api/Employee
         [HttpGet]
+        [Route("Get All Employees")]
         public async Task<ActionResult<IEnumerable<EmployeeModel>>> GetEmployees()
         {
             var employees = await _employeeRepository.GetEmployeesAsync();
@@ -31,7 +25,7 @@ namespace API.Controllers.Employee
         }
 
         // GET: api/Employee/{id}
-        [HttpGet("{id}")]
+        [HttpGet("Get Employee By {id}")]
         public async Task<ActionResult<EmployeeModel>> GetEmployee(Guid id)
         {
             var employee = await _employeeRepository.GetEmployeeAsync(id);
@@ -44,6 +38,7 @@ namespace API.Controllers.Employee
 
         // POST: api/Employee
         [HttpPost]
+        [Route("Add Employee")]
         public async Task<ActionResult<EmployeeModel>> CreateEmployee(EmployeeModel employee)
         {
             var createdEmployee = await _employeeRepository.CreateEmployeeAsync(employee);
@@ -51,7 +46,7 @@ namespace API.Controllers.Employee
         }
 
         // PUT: api/Employee/{id}
-        [HttpPut("{id}")]
+        [HttpPut("Update Employee By {id}")]
         public async Task<IActionResult> UpdateEmployee(Guid id, EmployeeModel employee)
         {
             var updatedEmployee = await _employeeRepository.UpdateEmployeeAsync(id, employee);
@@ -63,7 +58,7 @@ namespace API.Controllers.Employee
         }
 
         // DELETE: api/Employee/{id}
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete Employee By {id}")]
         public async Task<IActionResult> DeleteEmployee(Guid id)
         {
             var result = await _employeeRepository.DeleteEmployeeAsync(id);
