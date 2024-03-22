@@ -58,6 +58,10 @@
     <Folder Include="Commands\Car\AddCar\" />
     <Folder Include="Commands\Car\DeleteCar\" />
     <Folder Include="Commands\Car\UpdateCar\" />
+    <Folder Include="Commands\WareHouse\" />
+    <Folder Include="Commands\WareHouse\AddWarehouse\" />
+    <Folder Include="Commands\WareHouse\DeleteWarehouse\" />
+    <Folder Include="Commands\WareHouse\UpdateWarehouse\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -102,5 +106,9 @@
     <None Remove="Commands\Car\AddCar\" />
     <None Remove="Commands\Car\DeleteCar\" />
     <None Remove="Commands\Car\UpdateCar\" />
+    <None Remove="Commands\WareHouse\" />
+    <None Remove="Commands\WareHouse\AddWarehouse\" />
+    <None Remove="Commands\WareHouse\DeleteWarehouse\" />
+    <None Remove="Commands\WareHouse\UpdateWarehouse\" />
   </ItemGroup>
 </Project>
