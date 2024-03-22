@@ -1,4 +1,4 @@
-﻿using Domain.Models.UserModel;
+﻿using Domain.Models.User;
 using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -19,7 +19,7 @@ namespace Infrastructure.Repositories.UserRepo
         }
 
 
-        public async Task<UserModels> AddUserAsync(UserModels user)
+        public async Task<UserModel> AddUserAsync(UserModel user)
         {
             await _database.Users.AddAsync(user);
             await _database.SaveChangesAsync();
@@ -33,17 +33,17 @@ namespace Infrastructure.Repositories.UserRepo
             throw new NotImplementedException();
         }
 
-        public async Task<List<UserModels>> GetAllUsersAsync()
+        public async Task<List<UserModel>> GetAllUsersAsync()
         {
             return await _database.Users.ToListAsync();
         }
 
-        public async Task<UserModels> GetUserByIdAsync(Guid id)
+        public async Task<UserModel> GetUserByIdAsync(Guid id)
         {
             return await _database.Users.FindAsync(id);
         }
 
-        public async Task<UserModels> GetByEmailAsync(string email)
+        public async Task<UserModel> GetByEmailAsync(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
             {
@@ -52,7 +52,7 @@ namespace Infrastructure.Repositories.UserRepo
             return await _database.Users.FirstOrDefaultAsync(x => x.Email.ToLower() == email.ToLower());
         }
 
-        public async Task UpdateUserAsync(UserModels user)
+        public async Task UpdateUserAsync(UserModel user)
         {
             _database.Users.Update(user);
             await _database.SaveChangesAsync();

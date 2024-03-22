@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain.Models.UserModel
+namespace Domain.Models.User
 {
-    public class UserModels
+    public class UserModel
     {
         [Key]
         public Guid UserId { get; set; }

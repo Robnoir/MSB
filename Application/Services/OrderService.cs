@@ -1,7 +1,7 @@
 ﻿using Domain.Models.OrderModel;
 using Infrastructure.Repositories.OrderRepo;
 using Microsoft.EntityFrameworkCore;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 
 public class OrderService
 {

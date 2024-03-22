@@ -1,15 +1,11 @@
-﻿using Application.Commands.Users.DeleteUser;
-using Application.Commands.Users.UpdateUser;
 using Application.Dto.User;
+using Application.Commands.Users.DeleteUser;
+using Application.Commands.Users.UpdateUser;
 using Application.Queries.User.GetAll;
 using Application.Queries.User.GetById;
-using Domain.Models.UserModel;
 using Infrastructure.Repositories.UserRepo;
 using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection.Metadata.Ecma335;
 
 namespace API.Controllers.UserController
 {

@@ -1,4 +1,4 @@
-﻿using Domain.Models.UserModel;
+﻿using Domain.Models.User;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Queries.User.GetById
 {
-    public class GetUserByIdQuery : IRequest<UserModels>
+    public class GetUserByIdQuery : IRequest<UserModel>
     {
         public GetUserByIdQuery(Guid userId)
         {

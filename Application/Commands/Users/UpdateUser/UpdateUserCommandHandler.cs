@@ -1,4 +1,4 @@
-﻿using Domain.Models.UserModel;
+﻿using Domain.Models.User;
 using Infrastructure.Repositories.UserRepo;
 using System;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace Application.Commands.Users.UpdateUser
             _userRepository = userRepository;
         }
 
-        public async Task<UserModels> Handle(UpdateUserCommand command, CancellationToken cancellationToken)
+        public async Task<UserModel> Handle(UpdateUserCommand command, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetUserByIdAsync(command.UserId);
             if (user == null)

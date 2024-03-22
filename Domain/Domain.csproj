@@ -7,7 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\WareHouse\" />
+    <Folder Include="Models\Driver\" />
+    <Folder Include="Models\Employee\" />
+    <Folder Include="Models\Car\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -15,4 +17,9 @@
     <PackageReference Include="System.Diagnostics.Tools" Version="4.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Models\Driver\" />
+    <None Remove="Models\Employee\" />
+    <None Remove="Models\Car\" />
+  </ItemGroup>
 </Project>

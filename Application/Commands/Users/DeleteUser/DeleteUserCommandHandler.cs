@@ -1,4 +1,4 @@
-﻿using Domain.Models.UserModel;
+﻿using Domain.Models.User;
 using Infrastructure.Repositories.UserRepo;
 using MediatR;
 using System;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Users.DeleteUser
 {
-    public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, UserModels>
+    public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, UserModel>
     {
 
         private readonly IUserRepository _userRepository;
@@ -18,11 +18,11 @@ namespace Application.Commands.Users.DeleteUser
             _userRepository = userRepository;
 
         }
-        public async Task<UserModels> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
+        public async Task<UserModel> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
             try
             {
-                UserModels userToDelete = await _userRepository.GetUserByIdAsync(request.Id);
+                UserModel userToDelete = await _userRepository.GetUserByIdAsync(request.Id);
 
                 if (userToDelete == null)
                 {

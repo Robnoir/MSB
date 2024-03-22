@@ -17,9 +17,6 @@
     <Folder Include="Commands\Order\AddOrder\" />
     <Folder Include="Commands\Order\DeleteOrder\" />
     <Folder Include="Commands\Order\UpdateOrder\" />
-    <Folder Include="Commands\WareHouse\AddWarehouse\" />
-    <Folder Include="Commands\WareHouse\DeleteWarehouse\" />
-    <Folder Include="Commands\WareHouse\UpdateWarehouse\" />
     <Folder Include="Commands\Users\DeleteUser\" />
     <Folder Include="Commands\Users\UpdateUser\" />
     <Folder Include="Dto\Employee\" />
@@ -40,6 +37,31 @@
     <Folder Include="Queries\Warehouse\GetAll\" />
     <Folder Include="Queries\Warehouse\GetByID\" />
     <Folder Include="Validators\" />
+    <Folder Include="Commands\Employee\" />
+    <Folder Include="Commands\Employee\AddEmployee\" />
+    <Folder Include="Commands\Employee\DeleteEmployee\" />
+    <Folder Include="Commands\Employee\UpdateEmployee\" />
+    <Folder Include="Queries\Employee\" />
+    <Folder Include="Queries\Employee\GetAll\" />
+    <Folder Include="Queries\Employee\GetById\" />
+    <Folder Include="Commands\Driver\" />
+    <Folder Include="Commands\Driver\AddDriver\" />
+    <Folder Include="Commands\Driver\DeleteDriver\" />
+    <Folder Include="Commands\Driver\UpdateDriver\" />
+    <Folder Include="Queries\Driver\" />
+    <Folder Include="Queries\Driver\GetAll\" />
+    <Folder Include="Queries\Driver\GetById\" />
+    <Folder Include="Queries\Car\" />
+    <Folder Include="Queries\Car\GetAll\" />
+    <Folder Include="Queries\Car\GetById\" />
+    <Folder Include="Commands\Car\" />
+    <Folder Include="Commands\Car\AddCar\" />
+    <Folder Include="Commands\Car\DeleteCar\" />
+    <Folder Include="Commands\Car\UpdateCar\" />
+    <Folder Include="Commands\WareHouse\" />
+    <Folder Include="Commands\WareHouse\AddWarehouse\" />
+    <Folder Include="Commands\WareHouse\DeleteWarehouse\" />
+    <Folder Include="Commands\WareHouse\UpdateWarehouse\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -62,4 +84,31 @@
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Commands\Employee\" />
+    <None Remove="Commands\Employee\AddEmployee\" />
+    <None Remove="Commands\Employee\DeleteEmployee\" />
+    <None Remove="Commands\Employee\UpdateEmployee\" />
+    <None Remove="Queries\Employee\" />
+    <None Remove="Queries\Employee\GetAll\" />
+    <None Remove="Queries\Employee\GetById\" />
+    <None Remove="Commands\Driver\" />
+    <None Remove="Commands\Driver\AddDriver\" />
+    <None Remove="Commands\Driver\DeleteDriver\" />
+    <None Remove="Commands\Driver\UpdateDriver\" />
+    <None Remove="Queries\Driver\" />
+    <None Remove="Queries\Driver\GetAll\" />
+    <None Remove="Queries\Driver\GetById\" />
+    <None Remove="Queries\Car\" />
+    <None Remove="Queries\Car\GetAll\" />
+    <None Remove="Queries\Car\GetById\" />
+    <None Remove="Commands\Car\" />
+    <None Remove="Commands\Car\AddCar\" />
+    <None Remove="Commands\Car\DeleteCar\" />
+    <None Remove="Commands\Car\UpdateCar\" />
+    <None Remove="Commands\WareHouse\" />
+    <None Remove="Commands\WareHouse\AddWarehouse\" />
+    <None Remove="Commands\WareHouse\DeleteWarehouse\" />
+    <None Remove="Commands\WareHouse\UpdateWarehouse\" />
+  </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Models.UserModel;
+using Domain.Models.User;
 
 namespace Domain.Models.Address
 {
@@ -14,7 +14,7 @@ namespace Domain.Models.Address
         public Guid AddressId { get; set; }
         [ForeignKey("UserId")]
         public Guid UserId { get; set; }
-        public UserModels User { get; set; }
+        public UserModel User { get; set; }
         public string StreetName { get; set; } = string.Empty;
         public string StreetNumber { get; set; } = string.Empty;
         public string Apartment { get; set; } = string.Empty;

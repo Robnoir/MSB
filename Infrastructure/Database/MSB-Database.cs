@@ -1,12 +1,13 @@
 ﻿using Domain.Models.Address;
+using Domain.Models.Car;
+using Domain.Models.Driver;
+using Domain.Models.Employee;
+using Domain.Models.User;
 using Domain.Models.BoxModel;
 using Domain.Models.OrderModel;
 using Domain.Models.Shelf;
-using Domain.Models.UserModel;
 using Domain.Models.Warehouse;
 using Microsoft.EntityFrameworkCore;
-using System.Drawing;
-using System.Reflection.Emit;
 
 namespace Infrastructure.Database
 {
@@ -15,8 +16,11 @@ namespace Infrastructure.Database
 
         public MSB_Database(DbContextOptions<MSB_Database> options) : base(options) { }
 
-        public virtual DbSet<UserModels> Users { get; set; }
+        public virtual DbSet<UserModel> Users { get; set; }
+        public virtual DbSet<EmployeeModel> Employees { get; set; }
         public virtual DbSet<AddressModel> Addresses { get; set; }
+        public virtual DbSet<DriverModel> Drivers { get; set; }
+        public virtual DbSet<CarModel> Cars { get; set; }
         public virtual DbSet<OrderModel> Orders { get; set; }
         public virtual DbSet<WarehouseModel> Warehouses { get; set; }
         public virtual DbSet<ShelfModel> Shelves { get; set; }
@@ -27,12 +31,12 @@ namespace Infrastructure.Database
 
 
             // Mock data for UserModels
-            var users = new UserModels[]
+            var users = new UserModel[]
             {
-            new UserModels { UserId = Guid.NewGuid(), Email = "Adam@gmail.com", FirstName = "Adam", LastName = "Andersson", PhoneNumber = 0735097384, PasswordHash = "Adam123",  },
-            new UserModels { UserId = Guid.NewGuid(), Email = "Bertil@gmail.com", FirstName = "Bertil", LastName = "Bengtsson", PhoneNumber = 0735097384, PasswordHash = "Bertil123" },
-            new UserModels { UserId = Guid.NewGuid(), Email = "Cecar@gmail.com", FirstName = "Cecar", LastName = "Citron", PhoneNumber = 0735097384, PasswordHash = "Cecar123" },
-            new UserModels { UserId = Guid.NewGuid(), Email = "Erik@gmail.com", FirstName = "Erik", LastName = "Eriksson", PhoneNumber = 0735097384, PasswordHash = "Erik123" },
+            new UserModel { UserId = Guid.NewGuid(), Email = "Adam@gmail.com", FirstName = "Adam", LastName = "Andersson", PhoneNumber = 0735097384, PasswordHash = "Adam123",  },
+            new UserModel { UserId = Guid.NewGuid(), Email = "Bertil@gmail.com", FirstName = "Bertil", LastName = "Bengtsson", PhoneNumber = 0735097384, PasswordHash = "Bertil123" },
+            new UserModel { UserId = Guid.NewGuid(), Email = "Cecar@gmail.com", FirstName = "Cecar", LastName = "Citron", PhoneNumber = 0735097384, PasswordHash = "Cecar123" },
+            new UserModel { UserId = Guid.NewGuid(), Email = "Erik@gmail.com", FirstName = "Erik", LastName = "Eriksson", PhoneNumber = 0735097384, PasswordHash = "Erik123" },
             };
 
 
@@ -49,14 +53,14 @@ namespace Infrastructure.Database
             //{
             //    users[i].Addresses = addresses[i].AddressId;
             //}
-            modelBuilder.Entity<UserModels>().HasData(users);
+            modelBuilder.Entity<UserModel>().HasData(users);
             for (int i = 0; i < users.Length; i++)
             {
                 addresses[i].UserId = users[i].UserId;
             }
             modelBuilder.Entity<AddressModel>().HasData(addresses);
 
-            modelBuilder.Entity<UserModels>()
+            modelBuilder.Entity<UserModel>()
           .HasMany(u => u.Addresses)
           .WithOne(a => a.User)
           .HasForeignKey(a => a.UserId)
