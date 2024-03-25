@@ -1,8 +1,10 @@
 ﻿using Application.Commands.Warehouse.AddWarehouse;
 using Application.Commands.Warehouse.DeleteWarehouse;
 using Application.Commands.Warehouse.UpdateWarehouse;
+using Application.Dto.AddWarehouse;
 using Application.Dto.Warehouse;
 using Application.Queries.Warehouse.GetAll;
+using Application.Queries.Warehouse.GetByID;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,12 +25,11 @@ namespace API.Controllers.Warehouse
         public async Task<ActionResult<WarehouseDto>> AddWarehouse([FromBody] AddWarehouseCommand command)
         {
             var warehouse = await _mediator.Send(command);
-            var warehouseDto = new WarehouseDto
+            var addWarehouseDto = new AddWarehouseDto
             {
-                WarehouseId = warehouse.WarehouseId,
                 WarehouseName = warehouse.WarehouseName
             };
-            return CreatedAtAction(nameof(AddWarehouse), warehouseDto);
+            return CreatedAtAction(nameof(AddWarehouse), addWarehouseDto);
         }
 
         [HttpDelete("{id}")]
@@ -61,6 +62,25 @@ namespace API.Controllers.Warehouse
                 WarehouseName = warehouse.WarehouseName
             });
             return Ok(warehouseDtos);
+        }
+
+        [HttpGet("Get Warehouse By {id}")]
+        public async Task<ActionResult<WarehouseDto>> GetWarehouseById(Guid id)
+        {
+            var query = new GetWarehouseByIdQuery(id);
+            var warehouse = await _mediator.Send(query);
+
+            if (warehouse == null)
+            {
+                return NotFound();
+            }
+
+            var warehouseDto = new WarehouseDto
+            {
+                WarehouseId = warehouse.WarehouseId,
+                WarehouseName = warehouse.WarehouseName
+            };
+            return Ok(warehouseDto);
         }
     }
 }

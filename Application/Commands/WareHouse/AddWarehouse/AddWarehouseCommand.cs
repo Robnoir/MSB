@@ -1,4 +1,4 @@
-﻿using Application.Dto.Warehouse;
+﻿using Application.Dto.AddWarehouse;
 using Domain.Models.Warehouse;
 using MediatR;
 
@@ -6,11 +6,11 @@ namespace Application.Commands.Warehouse.AddWarehouse
 {
     public class AddWarehouseCommand : IRequest<WarehouseModel>
     {
-        public AddWarehouseCommand(WarehouseDto newWarehouse)
+        public AddWarehouseCommand(AddWarehouseDto newWarehouse)
         {
             NewWarehouse = newWarehouse;
         }
-        public WarehouseDto NewWarehouse { get; }
+        public AddWarehouseDto NewWarehouse { get; }
     }
 }
 
