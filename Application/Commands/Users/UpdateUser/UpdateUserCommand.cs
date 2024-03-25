@@ -1,4 +1,5 @@
-﻿using Application.Dto.User;
+﻿using Application.Dto.UpdateUserInfo;
+using Application.Dto.User;
 using Domain.Models.UserModel;
 using MediatR;
 using System;
@@ -11,17 +12,15 @@ namespace Application.Commands.Users.UpdateUser
 {
     public class UpdateUserCommand : IRequest<UserModels>
     {
-        public UserDto UpdateUserDto { get; }
+        public UpdateUserInfoDto UpdateUserInfoDto { get; }
         public Guid UserId { get; }
 
         public string UpdatePassword { get; set; }
 
-        public UpdateUserCommand(UserDto userDto, Guid userId)
+        public UpdateUserCommand(UpdateUserInfoDto userInfoDto, Guid userId)
         {
-            UpdateUserDto = userDto;
+            UpdateUserInfoDto = userInfoDto;
             UserId = userId;
-
-
         }
     }
 }

@@ -18,6 +18,8 @@ namespace Infrastructure.Repositories.UserRepo
 
         Task<UserModels> GetByEmailAsync(string email);
 
+        Task<bool> UpdatePasswordAsync(UserModels user);
+
 
 
     }

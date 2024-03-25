@@ -15,10 +15,10 @@ namespace Domain.Models.UserModel
         [Required]
         public string Email { get; set; } = string.Empty;
         [Required]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; } = string.Empty;
         [Required]
         public string PasswordHash { get; set; } = string.Empty;
 
-        public ICollection<AddressModel> Addresses { get; set; }
+        public ICollection<AddressModel> Addresses { get; set; } = new List<AddressModel>();
     }
 }

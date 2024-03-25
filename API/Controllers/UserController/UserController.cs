@@ -1,5 +1,6 @@
 ﻿using Application.Commands.Users.DeleteUser;
 using Application.Commands.Users.UpdateUser;
+using Application.Dto.UpdateUserInfo;
 using Application.Dto.User;
 using Application.Queries.User.GetAll;
 using Application.Queries.User.GetById;
@@ -57,12 +58,12 @@ namespace API.Controllers.UserController
         }
         //------------------------------------------------------------------------------------
         [HttpPut]
-        [Route("(Update User")]
-        public async Task<IActionResult> UpdateUser([FromBody] UserDto updatedUserDto, Guid updatedUserId)
+        [Route("Update User")]
+        public async Task<IActionResult> UpdateUser([FromBody] UpdateUserInfoDto updatedUserInfoDto, Guid updatedUserId)
         {
             try
             {
-                var command = new UpdateUserCommand(updatedUserDto, updatedUserId);
+                var command = new UpdateUserCommand(updatedUserInfoDto, updatedUserId);
                 var result = await _mediator.Send(command);
 
                 if (result == null)
@@ -71,8 +72,6 @@ namespace API.Controllers.UserController
                 }
 
                 return Ok(result);
-
-
             }
             catch (KeyNotFoundException ex)
             {
@@ -80,7 +79,7 @@ namespace API.Controllers.UserController
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, $"An Error occurred:{ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"An Error occurred: {ex.Message}");
             }
         }
 

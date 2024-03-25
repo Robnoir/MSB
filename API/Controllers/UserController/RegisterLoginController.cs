@@ -1,6 +1,8 @@
 ﻿using Application.Commands.Users.LogIn;
 using Application.Dto.LogIn;
 using Application.Dto.Register;
+using Application.Validators.UserValidator;
+using FluentValidation;
 using Infrastructure.Repositories.UserRepo;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -15,12 +17,16 @@ namespace API.Controllers.UserController
         private readonly IMediator _mediator;
         private readonly IConfiguration _configuration;
         private readonly IUserRepository _userRepository;
+        private readonly UserValidations _userValidations;
+        private readonly LogInValidations _logInValidations;
 
-        public RegisterLoginController(IMediator mediator, IConfiguration configuration, IUserRepository userRepository)
+        public RegisterLoginController(IMediator mediator, IConfiguration configuration, IUserRepository userRepository, UserValidations validations, LogInValidations logInValidations)
         {
             _configuration = configuration;
             _mediator = mediator;
             _userRepository = userRepository;
+            _userValidations = validations;
+            _logInValidations = logInValidations;
         }
         //------------------------------------------------------------------------------------
 
@@ -28,6 +34,12 @@ namespace API.Controllers.UserController
         [Route("Register")]
         public async Task<IActionResult> Register([FromBody] RegisterDto registerDto)
         {
+            var validationResult = _userValidations.Validate(registerDto);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors);
+            }
+
             try
             {
                 var command = new AddUserCommand(registerDto);
@@ -47,6 +59,13 @@ namespace API.Controllers.UserController
         [Route("Login")]
         public async Task<IActionResult> Login([FromBody] LogInDto logInDto)
         {
+
+            var validationResult = _logInValidations.Validate(logInDto);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors);
+            }
+
             try
             {
                 var command = new UserLoginCommand(logInDto);
