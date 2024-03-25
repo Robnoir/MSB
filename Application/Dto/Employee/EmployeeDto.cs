@@ -1,19 +1,21 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Domain.Models.Driver;
 
 namespace Application.Dto.Employee
 {
     public class EmployeeDto
     {
-        public string? Name;
+        [Required] public Guid EmployeeId { get; set; }
+        [Required] public string Email { get; set; }
+        [Required] public string Password { get; set; }
+        [Required] public string FirstName { get; set; }
+        [Required] public string LastName { get; set; }
+        [Required] public string Role { get; set; }
 
-
-        public int? EmployeeId { get; set; }
-
-        [ForeignKey("AddressId")]
-        public int AddressId { get; set; }
-        // public Address Address { get; set; }
-
+        //public ICollection<WareHouseModel> WareHouses { get; set; }
+        //public ICollection<AddressModel> Addresses { get; set; }
+        public ICollection<DriverModel> Drivers { get; set; }
 
     }
 }

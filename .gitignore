@@ -6,8 +6,14 @@
 [Tt]est[Rr]esult*/
 [Aa]rtifacts/
 packages/
-**/migrations/
-appsettings.json
+
+
+# App Settings
+**/appsettings*.json
+
+# EF Core Migrations
+**/Migrations/
+
 
 
 # Files #

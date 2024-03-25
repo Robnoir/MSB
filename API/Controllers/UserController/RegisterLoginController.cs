@@ -5,7 +5,6 @@ using Application.Validators.UserValidator;
 using FluentValidation;
 using Infrastructure.Repositories.UserRepo;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers.UserController
@@ -52,7 +51,6 @@ namespace API.Controllers.UserController
             }
         }
 
-
         //------------------------------------------------------------------------------------
 
         [HttpPost]
@@ -93,12 +91,6 @@ namespace API.Controllers.UserController
             {
                 return BadRequest(new { Message = ex.Message });
             }
-
         }
-
-
-
-
-
     }
 }

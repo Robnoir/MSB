@@ -1,4 +1,4 @@
-﻿using Domain.Models.UserModel;
+﻿using Domain.Models.User;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Queries.User.GetAll
 {
-    public class GetAllUsersQuery : IRequest<List<UserModels>>
+    public class GetAllUsersQuery : IRequest<List<UserModel>>
     {
 
     }

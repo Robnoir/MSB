@@ -1,16 +1,9 @@
-﻿using Domain.Models.UserModel;
+﻿using Domain.Models.User;
 using Infrastructure.Repositories.UserRepo;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Application.Commands.Users.LogIn
 {
     public class UserLoginCommandHandler
     {
-
         private readonly IUserRepository _userRepository;
 
         public UserLoginCommandHandler(IUserRepository userRepository)
@@ -18,7 +11,7 @@ namespace Application.Commands.Users.LogIn
             _userRepository = userRepository;
         }
 
-        public async Task<UserModels> Handle(UserLoginCommand request, CancellationToken cancellationToken)
+        public async Task<UserModel> Handle(UserLoginCommand request, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetByEmailAsync(request.logInDtos.Email);
             if (user == null)
@@ -32,19 +25,7 @@ namespace Application.Commands.Users.LogIn
                 throw new UnauthorizedAccessException("Invalid credentials.");
             }
 
-
             return user;
-
-
-
-
         }
-
-
-
-
-
-
-
     }
 }

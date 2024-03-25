@@ -21,6 +21,7 @@ namespace API.Controllers.Shelf
         }
 
         [HttpPost]
+        [Route("Add Shelf")]
         public async Task<ActionResult<ShelfDto>> AddShelf(AddShelfCommand command)
         {
             var shelf = await _mediator.Send(command);
@@ -36,6 +37,7 @@ namespace API.Controllers.Shelf
         }
 
         [HttpGet]
+        [Route("Get All Shelves")]
         public async Task<ActionResult<IEnumerable<ShelfDto>>> GetAllShelves()
         {
             var query = new GetAllShelvesQuery();
@@ -51,7 +53,7 @@ namespace API.Controllers.Shelf
             return Ok(shelfDtos);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("Get Shelf By {id}")]
         public async Task<ActionResult<ShelfDto>> GetShelfById(Guid id)
         {
             var query = new GetShelfByIdQuery(id);
@@ -73,7 +75,7 @@ namespace API.Controllers.Shelf
             return Ok(shelfDto);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("Update Shelf By {id}")]
         public async Task<IActionResult> UpdateShelf(Guid id, ShelfDto shelfDto)
         {
             if (id != shelfDto.ShelfId)
@@ -87,7 +89,7 @@ namespace API.Controllers.Shelf
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete Shelf By {id}")]
         public async Task<IActionResult> DeleteShelf(Guid id)
         {
             var command = new DeleteShelfCommand(id);

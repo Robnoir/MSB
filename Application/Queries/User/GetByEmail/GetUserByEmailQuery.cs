@@ -1,4 +1,4 @@
-﻿using Domain.Models.UserModel;
+﻿using Domain.Models.User;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Queries.User.GetByEmail
 {
-    public class GetUserByEmailQuery : IRequest<UserModels>
+    public class GetUserByEmailQuery : IRequest<UserModel>
     {
         public string Email { get; set; }
 

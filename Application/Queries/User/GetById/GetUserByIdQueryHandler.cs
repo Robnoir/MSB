@@ -1,4 +1,4 @@
-﻿using Domain.Models.UserModel;
+﻿using Domain.Models.User;
 using Infrastructure.Repositories.UserRepo;
 using MediatR;
 using System;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.Queries.User.GetById
 {
-    public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserModels>
+    public class GetUserByIdQueryHandler : IRequestHandler<GetUserByIdQuery, UserModel>
     {
         private readonly IUserRepository _userRepository;
 
@@ -20,9 +20,9 @@ namespace Application.Queries.User.GetById
         }
 
 
-        public async Task<UserModels> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
+        public async Task<UserModel> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
-            UserModels wantedUser = await _userRepository.GetUserByIdAsync(request.Id);
+            UserModel wantedUser = await _userRepository.GetUserByIdAsync(request.Id);
             try
             {
                 if (wantedUser == null)

@@ -1,4 +1,6 @@
 ﻿using Infrastructure.Database;
+using Infrastructure.Repositories.DriverRepo;
+using Infrastructure.Repositories.EmployeeRepo;
 using Infrastructure.Repositories.AddressRepo;
 using Infrastructure.Repositories.BoxRepo;
 using Infrastructure.Repositories.OrderRepo;
@@ -16,6 +18,12 @@ namespace Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IDriverRepository, DriverRepository>();
+
+            services.AddDbContext<MSB_Database>(options =>
+                   options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
+                       new MySqlServerVersion(new Version(8, 3, 0))));
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IWarehouseRepository, WarehouseRepository>();
             services.AddScoped<IAddressRepository, AddressRepository>();
@@ -26,9 +34,11 @@ namespace Infrastructure
                    options.UseMySql(configuration.GetConnectionString("DefaultConnection"),
                        new MySqlServerVersion(new Version(8, 0, 21)))
                    .EnableSensitiveDataLogging()
+
             );
 
             return services;
+
         }
     }
 }

@@ -1,9 +1,12 @@
 ﻿using Application.Commands.Address.AddAddress;
 using Application.Commands.Address.DeleteAddress;
 using Application.Commands.Address.UpdateAddress;
+using Application.Dto.Adress;
 using Application.Queries.Address.GetAll;
 using Application.Queries.Address.GetByID;
+using Application.Validators.AddressValidator;
 using Domain.Models.Address;
+using Infrastructure.Repositories.OrderRepo;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,29 +18,37 @@ namespace API.Controllers.Address
     {
 
         private readonly IMediator _mediator;
+        private readonly IConfiguration _configuration;
+        private readonly AddressRepository _addressRepository;
+        private readonly AddressValidations _addressValidations;
 
-        public AddressController(IMediator mediator)
+        public AddressController(IMediator mediator, IConfiguration configuration, AddressRepository addressRepository, AddressValidations validationRules)
         {
             _mediator = mediator;
+            _configuration = configuration;
+            _addressRepository = addressRepository;
+            _addressValidations = validationRules;
         }
 
         [HttpPost]
-        public async Task<ActionResult<AddressModel>> AddAddress(AddAddressCommand command)
+        [Route("Add Address")]
+        public async Task<ActionResult<AddressDto>> AddAddress(AddAddressCommand command)
         {
             var address = await _mediator.Send(command);
             return CreatedAtAction(nameof(GetAddressById), new { id = address.AddressId }, address);
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AddressModel>>> GetAllAddresses()
+        [Route("Get All Addresses")]
+        public async Task<ActionResult<IEnumerable<AddressDto>>> GetAllAddresses()
         {
             var query = new GetAllAddressesQuery();
             var addresses = await _mediator.Send(query);
             return Ok(addresses);
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<AddressModel>> GetAddressById(Guid id)
+        [HttpGet("Get Address By {id}")]
+        public async Task<ActionResult<AddressDto>> GetAddressById(Guid id)
         {
             var query = new GetAddressByIdQuery(id);
             var address = await _mediator.Send(query);
@@ -50,7 +61,7 @@ namespace API.Controllers.Address
             return Ok(address);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("Update Address By {id}")]
         public async Task<IActionResult> UpdateAddress(Guid id, AddressModel address)
         {
             if (id != address.AddressId)
@@ -64,7 +75,7 @@ namespace API.Controllers.Address
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete Address By {id}")]
         public async Task<IActionResult> DeleteAddress(Guid id)
         {
             var command = new DeleteAddressCommand(id);

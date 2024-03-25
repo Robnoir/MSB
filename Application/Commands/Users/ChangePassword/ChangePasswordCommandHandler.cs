@@ -1,5 +1,4 @@
-﻿using Domain.Models.UserModel;
-using Infrastructure.Repositories.UserRepo;
+﻿using Infrastructure.Repositories.UserRepo;
 using MediatR;
 using System;
 using System.Threading;

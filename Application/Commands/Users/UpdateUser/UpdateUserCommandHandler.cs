@@ -1,6 +1,6 @@
 ﻿using Application.Dto.Adress;
 using Domain.Models.Address;
-using Domain.Models.UserModel;
+using Domain.Models.User;
 using Infrastructure.Repositories.UserRepo;
 using MediatR;
 using System;
@@ -10,15 +10,14 @@ using System.Threading.Tasks;
 
 namespace Application.Commands.Users.UpdateUser
 {
-    public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, UserModels>
+    public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, UserModel>
     {
         private readonly IUserRepository _userRepository;
         public UpdateUserCommandHandler(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
-
-        public async Task<UserModels> Handle(UpdateUserCommand command, CancellationToken cancellationToken)
+        public async Task<UserModel> Handle(UpdateUserCommand command, CancellationToken cancellationToken)
         {
             var user = await _userRepository.GetUserByIdAsync(command.UserId);
             if (user == null)

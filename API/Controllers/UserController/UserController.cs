@@ -1,25 +1,19 @@
-﻿using Application.Commands.Users.DeleteUser;
+using Application.Commands.Users.DeleteUser;
 using Application.Commands.Users.UpdateUser;
 using Application.Dto.UpdateUserInfo;
 using Application.Dto.User;
 using Application.Queries.User.GetAll;
 using Application.Queries.User.GetById;
-using Domain.Models.UserModel;
 using Infrastructure.Repositories.UserRepo;
 using MediatR;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Reflection.Metadata.Ecma335;
 
 namespace API.Controllers.UserController
 {
-
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
-
         private readonly IMediator _mediator;
         private readonly IConfiguration _configuration;
         private readonly IUserRepository _userRepository;
@@ -38,8 +32,6 @@ namespace API.Controllers.UserController
         {
             return Ok(await _mediator.Send(new GetAllUsersQuery()));
         }
-
-
 
         //------------------------------------------------------------------------------------
 
@@ -94,16 +86,8 @@ namespace API.Controllers.UserController
             {
                 return NoContent();
             }
-
             return NotFound();
-
         }
-
         //------------------------------------------------------------------------------------
-
-
-
-
-
     }
 }

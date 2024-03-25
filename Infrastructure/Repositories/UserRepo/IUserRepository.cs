@@ -1,4 +1,4 @@
-﻿using Domain.Models.UserModel;
+﻿using Domain.Models.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,16 +9,16 @@ namespace Infrastructure.Repositories.UserRepo
 {
     public interface IUserRepository
     {
-        Task<UserModels> AddUserAsync(UserModels user);
-        Task UpdateUserAsync(UserModels user);
+        Task<UserModel> AddUserAsync(UserModel user);
+        Task UpdateUserAsync(UserModel user);
         Task DeleteUserAsync(Guid id);
-        Task<UserModels> GetUserByIdAsync(Guid id);
+        Task<UserModel> GetUserByIdAsync(Guid id);
 
-        Task<List<UserModels>> GetAllUsersAsync();
+        Task<List<UserModel>> GetAllUsersAsync();
 
-        Task<UserModels> GetByEmailAsync(string email);
+        Task<UserModel> GetByEmailAsync(string email);
 
-        Task<bool> UpdatePasswordAsync(UserModels user);
+        Task<bool> UpdatePasswordAsync(UserModel user);
 
 
 

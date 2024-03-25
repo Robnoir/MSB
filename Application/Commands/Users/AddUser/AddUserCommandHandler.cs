@@ -1,12 +1,9 @@
-﻿using MediatR;
-using Domain.Models.UserModel;
 using Domain.Models.Address;
+using Domain.Models.User;
 using Infrastructure.Repositories.UserRepo;
-using System.Threading;
-using System.Threading.Tasks;
-using Application.Dto.Register;
+using MediatR;
 
-public class AddUserCommandHandler : IRequestHandler<AddUserCommand, UserModels>
+public class AddUserCommandHandler : IRequestHandler<AddUserCommand, UserModel>
 {
     private readonly IUserRepository _userRepository;
 
@@ -15,9 +12,9 @@ public class AddUserCommandHandler : IRequestHandler<AddUserCommand, UserModels>
         _userRepository = userRepository;
     }
 
-    public async Task<UserModels> Handle(AddUserCommand request, CancellationToken cancellationToken)
+    public async Task<UserModel> Handle(AddUserCommand request, CancellationToken cancellationToken)
     {
-        var newUser = new UserModels
+        var newUser = new UserModel
         {
             Email = request.RegisterData.Email,
             FirstName = request.RegisterData.FirstName,
@@ -26,7 +23,6 @@ public class AddUserCommandHandler : IRequestHandler<AddUserCommand, UserModels>
             PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.RegisterData.Password),
             Addresses = new List<AddressModel>()
         };
-
 
         if (request.RegisterData.Address != null)
         {
@@ -43,8 +39,6 @@ public class AddUserCommandHandler : IRequestHandler<AddUserCommand, UserModels>
 
             });
         }
-
-
         var savedUser = await _userRepository.AddUserAsync(newUser);
 
         return savedUser;

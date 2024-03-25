@@ -1,4 +1,4 @@
-﻿using Domain.Models.UserModel;
+﻿using Domain.Models.User;
 using Infrastructure.Repositories.UserRepo;
 using MediatR;
 using System;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.Queries.User.GetByEmail
 {
-    public class GetUserByEmailQueryHandler : IRequestHandler<GetUserByEmailQuery, UserModels>
+    public class GetUserByEmailQueryHandler : IRequestHandler<GetUserByEmailQuery, UserModel>
     {
         private readonly IUserRepository _userRepository;
 
@@ -18,7 +18,7 @@ namespace Application.Queries.User.GetByEmail
             _userRepository = userRepository;
         }
 
-        public Task<UserModels> Handle(GetUserByEmailQuery request, CancellationToken cancellationToken)
+        public Task<UserModel> Handle(GetUserByEmailQuery request, CancellationToken cancellationToken)
         {
 
             if (string.IsNullOrWhiteSpace(request.Email))
