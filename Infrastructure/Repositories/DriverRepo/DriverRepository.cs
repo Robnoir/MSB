@@ -31,8 +31,6 @@ namespace Infrastructure.Repositories.DriverRepo
             _database.SaveChanges();
         }
 
-
-
         public async Task UpdateDriver(DriverModel driver)
         {
             _database.Drivers.Update(driver);
@@ -48,9 +46,6 @@ namespace Infrastructure.Repositories.DriverRepo
             _database.Drivers.Remove(driver);
             _database.SaveChanges();
         }
-
-     
-      
     }
 }
 
