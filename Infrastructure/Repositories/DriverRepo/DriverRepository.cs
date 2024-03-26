@@ -1,5 +1,6 @@
 ﻿using System;
 using Domain.Models.Driver;
+using Domain.Models.Order;
 using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,9 +20,9 @@ namespace Infrastructure.Repositories.DriverRepo
             return _database.Drivers.ToList();
         }
 
-        public DriverModel GetDriverById(Guid id)
+        public async Task<DriverModel> GetDriverByIdAsync(Guid id)
         {
-            return _database.Drivers.FirstOrDefault(d => d.DriverId == id);
+            return await _database.Drivers.FirstOrDefaultAsync(d => d.DriverId == id);
         }
 
         public void AddDriver(DriverModel driver)
@@ -30,10 +31,12 @@ namespace Infrastructure.Repositories.DriverRepo
             _database.SaveChanges();
         }
 
-        public void UpdateDriver(DriverModel driver)
+
+
+        public async Task UpdateDriver(DriverModel driver)
         {
             _database.Drivers.Update(driver);
-            _database.SaveChanges();
+            await _database.SaveChangesAsync();
         }
 
         public void DeleteDriver(Guid id)
@@ -45,6 +48,9 @@ namespace Infrastructure.Repositories.DriverRepo
             _database.Drivers.Remove(driver);
             _database.SaveChanges();
         }
+
+     
+      
     }
 }
 
