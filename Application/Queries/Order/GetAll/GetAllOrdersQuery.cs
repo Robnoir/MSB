@@ -1,4 +1,4 @@
-﻿using Domain.Models.OrderModel;
+﻿using Domain.Models.Order;
 using MediatR;
 
 namespace Application.Queries.Order.GetAll

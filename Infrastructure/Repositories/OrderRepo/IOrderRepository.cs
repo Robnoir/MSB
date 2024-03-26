@@ -1,4 +1,4 @@
-﻿using Domain.Models.OrderModel;
+﻿using Domain.Models.Order;
 
 namespace Infrastructure.Repositories.OrderRepo
 {
