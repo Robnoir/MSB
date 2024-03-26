@@ -20,7 +20,7 @@ namespace Application.Commands.Car.AddCar
         {
             return new CarModel
             {
-                CarID = carDto.CarId,
+                CarId = carDto.CarId,
                 Volume = carDto.Volume,
                 Type = carDto.Type,
                 Availability = carDto.Availability,

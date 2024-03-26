@@ -4,6 +4,7 @@ using Application.Queries.Driver.GetAll;
 using Domain.Models.Driver;
 using Infrastructure.Repositories.DriverRepo;
 using Microsoft.AspNetCore.Mvc;
+using Application.Dto.Car;
 
 namespace API.Controllers.Driver
 {
@@ -34,7 +35,7 @@ namespace API.Controllers.Driver
             {
                 DriverId = driver.DriverId,
                 EmployeeId = driver.EmployeeId,
-                // CarId = driver.CarId,
+                CarId = driver.CarId,
                 Employee = new EmployeeDto
                 {
                     EmployeeId = driver.Employee.EmployeeId,
@@ -44,11 +45,11 @@ namespace API.Controllers.Driver
                     LastName = driver.Employee.LastName,
                     Role = driver.Employee.Role
                 },
-                // Car = new CarDto
-                // {
-                //     CarId = driver.Car.CarId,
-                //     Map other properties as needed
-                // }
+                Car = new CarDto
+                {
+                  CarId = driver.Car.CarId,
+                  
+                }
             });
 
             return Ok(driverDtos);
@@ -62,7 +63,7 @@ namespace API.Controllers.Driver
             {
                 DriverId = driverDto.DriverId,
                 EmployeeId = driverDto.EmployeeId,
-                // CarId = driverDto.CarId
+                CarId = driverDto.CarId
             };
 
             _driverRepository.AddDriver(driver);
@@ -83,7 +84,7 @@ namespace API.Controllers.Driver
             {
                 DriverId = driverDto.DriverId,
                 EmployeeId = driverDto.EmployeeId,
-                // CarId = driverDto.CarId
+                CarId = driverDto.CarId
             };
 
             _driverRepository.UpdateDriver(driver);
@@ -93,9 +94,9 @@ namespace API.Controllers.Driver
 
         // DELETE: api/Drivers/5
         [HttpDelete("{id}")]
-        public ActionResult<DriverDto> DeleteDriver(Guid id)
+        public async Task<ActionResult<DriverDto>> DeleteDriver(Guid id)
         {
-            var driver = _driverRepository.GetDriverById(id);
+            var driver = await _driverRepository.GetDriverByIdAsync(id);
             if (driver == null)
             {
                 return NotFound();
@@ -108,8 +109,9 @@ namespace API.Controllers.Driver
             {
                 DriverId = driver.DriverId,
                 EmployeeId = driver.EmployeeId,
-                // CarId = driver.CarId
+                CarId = driver.CarId
             });
         }
+
     }
 }

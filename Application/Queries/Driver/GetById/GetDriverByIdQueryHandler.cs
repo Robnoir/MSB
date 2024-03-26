@@ -18,9 +18,9 @@ namespace Application.Queries.Driver.GetById
             _driverRepository = driverRepository;
         }
 
-        public DriverDetailDto Handle(GetDriverByIdQuery query)
+        public async Task<DriverDetailDto> Handle(GetDriverByIdQuery query)
         {
-            var driver = _driverRepository.GetDriverById(query.DriverId);
+            var driver = await _driverRepository.GetDriverByIdAsync(query.DriverId);
 
             if (driver == null)
             {
@@ -39,9 +39,9 @@ namespace Application.Queries.Driver.GetById
                     FirstName = driver.Employee.FirstName,
                     LastName = driver.Employee.LastName,
                     Role = driver.Employee.Role
-                },
-
+                }
             };
         }
+
     }
 }

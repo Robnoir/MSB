@@ -14,7 +14,7 @@ namespace Domain.Models.BoxModel
         public string UserNotes { get; set; } = string.Empty;
         [ForeignKey("OrderId")]
         public Guid OrderId { get; set; }
-        public OrderModel.OrderModel Order { get; set; }
+        public Order.OrderModel Order { get; set; }
         public string Size { get; set; } = string.Empty;
 
     }

@@ -8,12 +8,12 @@ namespace Domain.Models.Car
     public class CarModel
     {
         [Key]
-        public Guid CarID { get; set; }
+        public Guid CarId { get; set; }
         public double Volume { get; set; }
         public string Type { get; set; }
         public string Availability { get; set; }
 
-        public DriverModel Driver { get; set; }
+        public ICollection<DriverModel> Drivers { get; set; }
     }
 }
 

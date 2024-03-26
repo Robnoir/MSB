@@ -1,5 +1,5 @@
 ﻿using Application.Queries.Order.GetByID;
-using Domain.Models.OrderModel;
+using Domain.Models.Order;
 using Infrastructure.Repositories.OrderRepo;
 using MediatR;
 
