@@ -47,9 +47,9 @@ namespace API.Controllers.Driver
                 },
                 Car = new CarDto
                 {
-                  CarId = driver.Car.CarId,
-                  
+                    CarId = driver.Car.CarId
                 }
+
             });
 
             return Ok(driverDtos);
