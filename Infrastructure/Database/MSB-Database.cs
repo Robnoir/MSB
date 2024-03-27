@@ -30,10 +30,10 @@ namespace Infrastructure.Database
             // Mock data for UserModels
             var users = new UserModel[]
             {
-                new UserModel { UserId = Guid.NewGuid(), Email = "Adam@gmail.com", FirstName = "Adam", LastName = "Andersson", PhoneNumber = 0735097384, PasswordHash = "Adam123",  },
-                new UserModel { UserId = Guid.NewGuid(), Email = "Bertil@gmail.com", FirstName = "Bertil", LastName = "Bengtsson", PhoneNumber = 0735097384, PasswordHash = "Bertil123" },
-                new UserModel { UserId = Guid.NewGuid(), Email = "Cecar@gmail.com", FirstName = "Cecar", LastName = "Citron", PhoneNumber = 0735097384, PasswordHash = "Cecar123" },
-                new UserModel { UserId = Guid.NewGuid(), Email = "Erik@gmail.com", FirstName = "Erik", LastName = "Eriksson", PhoneNumber = 0735097384, PasswordHash = "Erik123" },
+            new UserModel{ UserId = Guid.NewGuid(), Email = "Adam@gmail.com", FirstName = "Adam", LastName = "Andersson", PhoneNumber = "0735097384", PasswordHash = "Adam123",  },
+            new UserModel { UserId = Guid.NewGuid(), Email = "Bertil@gmail.com", FirstName = "Bertil", LastName = "Bengtsson", PhoneNumber = "0735097384", PasswordHash = "Bertil123" },
+            new UserModel { UserId = Guid.NewGuid(), Email = "Cecar@gmail.com", FirstName = "Cecar", LastName = "Citron", PhoneNumber = "0735097384", PasswordHash = "Cecar123" },
+            new UserModel { UserId = Guid.NewGuid(), Email = "Erik@gmail.com", FirstName = "Erik", LastName = "Eriksson", PhoneNumber = "0735097384", PasswordHash = "Erik123" },
             };
 
 

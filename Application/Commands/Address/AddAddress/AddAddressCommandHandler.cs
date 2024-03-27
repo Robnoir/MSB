@@ -22,6 +22,7 @@ namespace Application.Commands.Address.AddAddress
                 State = request.NewAddress.State,
                 Country = request.NewAddress.Country,
                 Latitude = request.NewAddress.Latitude,
+                Longitude = request.NewAddress.Longitude,
 
 
             };

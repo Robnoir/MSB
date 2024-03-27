@@ -19,7 +19,7 @@ public class AddUserCommandHandler : IRequestHandler<AddUserCommand, UserModel>
             Email = request.RegisterData.Email,
             FirstName = request.RegisterData.FirstName,
             LastName = request.RegisterData.LastName,
-            PhoneNumber = int.Parse(request.RegisterData.PhoneNumber),
+            PhoneNumber = request.RegisterData.PhoneNumber,
             PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.RegisterData.Password),
             Addresses = new List<AddressModel>()
         };

@@ -1,11 +1,6 @@
 ﻿using Domain.Models.User;
 using Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories.UserRepo
 {
@@ -28,14 +23,19 @@ namespace Infrastructure.Repositories.UserRepo
 
         }
 
-        public Task DeleteUserAsync(Guid id)
+        public async Task DeleteUserAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var DeleteUserId = await _database.Users.FindAsync(id);
+            if (DeleteUserId != null)
+            {
+                _database.Users.Remove(DeleteUserId);
+                await _database.SaveChangesAsync();
+            }
         }
 
         public async Task<List<UserModel>> GetAllUsersAsync()
         {
-            return await _database.Users.ToListAsync();
+            return await _database.Users.Include(u => u.Addresses).ToListAsync();
         }
 
         public async Task<UserModel> GetUserByIdAsync(Guid id)
@@ -56,6 +56,19 @@ namespace Infrastructure.Repositories.UserRepo
         {
             _database.Users.Update(user);
             await _database.SaveChangesAsync();
+        }
+
+        public async Task<bool> UpdatePasswordAsync(UserModel user)
+        {
+            var userEntity = await _database.Users.FindAsync(user.UserId);
+            if (userEntity == null)
+            {
+                return false; // User not found, return false
+            }
+
+            userEntity.PasswordHash = user.PasswordHash; // Assume new password hash has already been set
+            await _database.SaveChangesAsync();
+            return true; // Password update successful
         }
     }
 }

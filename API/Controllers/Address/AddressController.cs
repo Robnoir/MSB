@@ -1,9 +1,13 @@
 ﻿using Application.Commands.Address.AddAddress;
 using Application.Commands.Address.DeleteAddress;
 using Application.Commands.Address.UpdateAddress;
+using Application.Dto.Adress;
 using Application.Queries.Address.GetAll;
 using Application.Queries.Address.GetByID;
+using Application.Validators.AddressValidator;
 using Domain.Models.Address;
+using FluentValidation;
+using Infrastructure.Repositories.OrderRepo;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,23 +19,48 @@ namespace API.Controllers.Address
     {
 
         private readonly IMediator _mediator;
+        private readonly IConfiguration _configuration;
+        private readonly AddressRepository _addressRepository;
+        private readonly AddressValidations _addressValidations;
 
-        public AddressController(IMediator mediator)
+        public AddressController(IMediator mediator, IConfiguration configuration, AddressRepository addressRepository, AddressValidations validationRules)
         {
             _mediator = mediator;
+            _configuration = configuration;
+            _addressRepository = addressRepository;
+            _addressValidations = validationRules;
         }
 
         [HttpPost]
         [Route("Add Address")]
-        public async Task<ActionResult<AddressModel>> AddAddress(AddAddressCommand command)
+        public async Task<ActionResult<AddressDto>> AddAddress(AddAddressCommand command)
         {
+            var adressDto = new AddressDto
+            {
+                StreetName = command.NewAddress.StreetName,
+                StreetNumber = command.NewAddress.StreetNumber,
+                Apartment = command.NewAddress.Apartment,
+                ZipCode = command.NewAddress.ZipCode,
+                Floor = command.NewAddress.Floor,
+                City = command.NewAddress.City,
+                State = command.NewAddress.State,
+                Country = command.NewAddress.Country,
+            };
+
+
+            var validationResult = _addressValidations.Validate(adressDto);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors);
+            }
+
             var address = await _mediator.Send(command);
             return CreatedAtAction(nameof(GetAddressById), new { id = address.AddressId }, address);
         }
 
         [HttpGet]
         [Route("Get All Addresses")]
-        public async Task<ActionResult<IEnumerable<AddressModel>>> GetAllAddresses()
+        public async Task<ActionResult<IEnumerable<AddressDto>>> GetAllAddresses()
         {
             var query = new GetAllAddressesQuery();
             var addresses = await _mediator.Send(query);
@@ -39,7 +68,7 @@ namespace API.Controllers.Address
         }
 
         [HttpGet("Get Address By {id}")]
-        public async Task<ActionResult<AddressModel>> GetAddressById(Guid id)
+        public async Task<ActionResult<AddressDto>> GetAddressById(Guid id)
         {
             var query = new GetAddressByIdQuery(id);
             var address = await _mediator.Send(query);

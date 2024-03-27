@@ -12,7 +12,8 @@ builder.Logging.AddDebug(); // Adds logging to the debug window.
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
     options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
-}); ;
+});
+
 builder.Services.AddApplication();
 
 builder.Services.AddInfrastructure(builder.Configuration);
