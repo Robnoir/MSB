@@ -2,18 +2,24 @@ using Domain.Models.Address;
 using Domain.Models.User;
 using Infrastructure.Repositories.UserRepo;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 public class AddUserCommandHandler : IRequestHandler<AddUserCommand, UserModel>
 {
     private readonly IUserRepository _userRepository;
+    private readonly ILogger<AddUserCommandHandler> _logger;
 
-    public AddUserCommandHandler(IUserRepository userRepository)
+
+    public AddUserCommandHandler(IUserRepository userRepository, ILogger<AddUserCommandHandler> logger)
     {
         _userRepository = userRepository;
+        _logger = logger;
     }
 
     public async Task<UserModel> Handle(AddUserCommand request, CancellationToken cancellationToken)
     {
+        _logger.LogInformation("AddUserCommandHandler.Handle");
+
         var newUser = new UserModel
         {
             Email = request.RegisterData.Email,

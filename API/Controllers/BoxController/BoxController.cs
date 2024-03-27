@@ -40,6 +40,7 @@ namespace API.Controllers.BoxController
             return CreatedAtAction(nameof(GetBoxById), new { id = box.BoxId }, boxDto);
         }
 
+        
         [HttpGet]
         [Route("Get All Boxes")]
         public async Task<ActionResult<IEnumerable<BoxDto>>> GetAllBoxes()
