@@ -6,6 +6,7 @@ using Application.Queries.Address.GetAll;
 using Application.Queries.Address.GetByID;
 using Application.Validators.AddressValidator;
 using Domain.Models.Address;
+using FluentValidation;
 using Infrastructure.Repositories.OrderRepo;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -34,6 +35,25 @@ namespace API.Controllers.Address
         [Route("Add Address")]
         public async Task<ActionResult<AddressDto>> AddAddress(AddAddressCommand command)
         {
+            var adressDto = new AddressDto
+            {
+                StreetName = command.NewAddress.StreetName,
+                StreetNumber = command.NewAddress.StreetNumber,
+                Apartment = command.NewAddress.Apartment,
+                ZipCode = command.NewAddress.ZipCode,
+                Floor = command.NewAddress.Floor,
+                City = command.NewAddress.City,
+                State = command.NewAddress.State,
+                Country = command.NewAddress.Country,
+            };
+
+
+            var validationResult = _addressValidations.Validate(adressDto);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors);
+            }
+
             var address = await _mediator.Send(command);
             return CreatedAtAction(nameof(GetAddressById), new { id = address.AddressId }, address);
         }

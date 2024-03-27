@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Domain.Models.OrderModel
+namespace Domain.Models.Order
 {
     public class OrderModel
     {
@@ -17,9 +17,9 @@ namespace Domain.Models.OrderModel
         public Guid UserId { get; set; }
         public UserModel User { get; set; }
 
-        // [ForeignKey("CarId")]
-        // public int CarId { get; set; }
-        // public Car.CarDto Car { get; set; }
+        [ForeignKey("CarId")]
+        public int CarId { get; set; }
+        public Car.CarModel Car { get; set; }
 
         // [ForeignKey("RepairId")]
         // public int RepairId { get; set; }

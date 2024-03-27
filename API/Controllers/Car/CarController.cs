@@ -10,6 +10,7 @@ using Domain.Models.Driver;
 using Infrastructure.Repositories.CarRepo;
 using Infrastructure.Repositories.DriverRepo;
 using Microsoft.AspNetCore.Mvc;
+using Infrastructure.Repositories.OrderRepo;
 
 
 namespace API.Controllers.Car
@@ -25,9 +26,10 @@ namespace API.Controllers.Car
         private readonly AddCarCommandHandler _addCarCommandHandler;
         private readonly DeleteCarCommandHandler _deleteCarCommandHandler;
         private readonly UpdateCarCommandHandler _updateCarCommandHandler;
+        private readonly IOrderRepository _orderRepository;
 
 
-        public CarController(ICarRepository carRepository, IDriverRepository driverRepository, GetAllCarsQueryHandler getAllCarsQueryHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, AddCarCommandHandler addCarCommandHandler, DeleteCarCommandHandler deleteCarCommandHandler, UpdateCarCommandHandler updateCarCommandHandler)
+        public CarController(ICarRepository carRepository, IDriverRepository driverRepository, GetAllCarsQueryHandler getAllCarsQueryHandler, GetCarByIdQueryHandler getCarByIdQueryHandler, AddCarCommandHandler addCarCommandHandler, DeleteCarCommandHandler deleteCarCommandHandler, UpdateCarCommandHandler updateCarCommandHandler, IOrderRepository orderRepository)
         {
             _carRepository = carRepository;
             _driverRepository = driverRepository;
@@ -36,6 +38,7 @@ namespace API.Controllers.Car
             _addCarCommandHandler = addCarCommandHandler;
             _deleteCarCommandHandler = deleteCarCommandHandler;
             _updateCarCommandHandler = updateCarCommandHandler;
+            _orderRepository = orderRepository;
 
         }
 
@@ -100,7 +103,10 @@ namespace API.Controllers.Car
 
             var driverModel = MapToDriverModel(driverDto);
 
-            car.Driver = driverModel;
+            // Add driver to car
+            car.Drivers.Add(driverModel);
+
+            // Update car in repository
             await _carRepository.UpdateCar(car);
 
             return Ok(car);
@@ -110,12 +116,12 @@ namespace API.Controllers.Car
         public async Task<IActionResult> DeleteDriverFromCar(Guid carId)
         {
             var car = await _carRepository.GetCarById(carId);
-            if (car == null || car.Driver == null)
+            if (car == null || car.Drivers == null)
             {
                 return NotFound();
             }
 
-            car.Driver = null;
+            car.Drivers = null;
             await _carRepository.UpdateCar(car);
 
             return NoContent();
@@ -132,17 +138,40 @@ namespace API.Controllers.Car
 
             var driverModel = MapToDriverModel(driverDto);
 
-            car.Driver = driverModel;
+            car.Drivers = (ICollection<DriverModel>)driverModel;
             await _carRepository.UpdateCar(car);
 
             return Ok(car);
+        }
+
+        [HttpPost("{driverId}/take-order")]
+        public async Task<IActionResult> TakeOrder(Guid driverId, [FromBody] Guid orderId)
+        {
+            var driver = await _driverRepository.GetDriverByIdAsync(driverId); ;
+            if (driver == null)
+            {
+                return NotFound("Driver not found.");
+            }
+
+            var order = await _orderRepository.GetOrderByIdAsync(orderId);
+            if (order == null)
+            {
+                return NotFound("Order not found.");
+            }
+
+            // Assign the order to the driver
+            driver.OrderId = orderId;
+
+            await _driverRepository.UpdateDriver(driver);
+
+            return Ok("Order successfully assigned to the driver.");
         }
 
         private CarModel MapToCarModel(CarDto carDto)
         {
             return new CarModel
             {
-                CarID = carDto.CarId,
+                CarId = carDto.CarId,
                 Volume = carDto.Volume,
                 Type = carDto.Type,
                 Availability = carDto.Availability,

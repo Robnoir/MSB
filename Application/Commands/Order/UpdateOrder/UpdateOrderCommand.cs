@@ -1,5 +1,5 @@
 ﻿using Application.Dto.Order;
-using Domain.Models.OrderModel;
+using Domain.Models.Order;
 using MediatR;
 
 namespace Application.Commands.Order.UpdateOrder

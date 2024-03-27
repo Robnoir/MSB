@@ -1,4 +1,4 @@
-﻿using Domain.Models.OrderModel;
+﻿using Domain.Models.Order;
 using Infrastructure.Repositories.OrderRepo;
 using Microsoft.EntityFrameworkCore;
 using MySqlConnector;

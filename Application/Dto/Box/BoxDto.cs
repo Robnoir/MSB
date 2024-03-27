@@ -1,4 +1,4 @@
-﻿using Domain.Models.OrderModel;
+﻿using Domain.Models.Order;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
