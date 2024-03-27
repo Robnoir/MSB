@@ -26,7 +26,7 @@ namespace Application.Validators.AddressValidator
 
             RuleFor(address => address.ZipCode)
                 .NotEmpty().WithMessage("Zip code is required.");
-                //.Matches(@"^\d{5}(-\d{4})?$").WithMessage("Zip code must be a valid ZIP code (U.S. format)."); // Adjust regex for local format if necessary
+            //.Matches(@"^\d{5}(-\d{4})?$").WithMessage("Zip code must be a valid ZIP code (U.S. format)."); // Adjust regex for local format if necessary
 
             RuleFor(address => address.Floor)
                 .NotEmpty().WithMessage("Floor is required.")

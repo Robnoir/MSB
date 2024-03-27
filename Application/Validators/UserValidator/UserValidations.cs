@@ -16,7 +16,7 @@ namespace Application.Validators.UserValidator
 
         public UserValidations(IValidator<AddressDto> AddressValidations)
         {
-   
+
             RuleFor(user => user.Email)
                .NotEmpty().WithMessage("Email is required.")
                .EmailAddress().WithMessage("Email is not in a correct format.");

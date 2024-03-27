@@ -18,7 +18,7 @@ namespace Application.Validators.UserValidator
 
             RuleFor(user => user.UserId)
                     .NotEmpty().WithMessage("UserID cannot be empty");
-                    
+
 
             RuleFor(user => user.CurrentPassword)
                     .NotEmpty().WithMessage("Password can not be empty")
